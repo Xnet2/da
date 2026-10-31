@@ -1,0 +1,3038 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<script>(function(){try{var t=localStorage.getItem('mtyalim_theme');if(t&&t!=='auto')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script>(function(){try{if(localStorage.getItem('mtyalim_token'))document.documentElement.setAttribute('data-boot','1');}catch(e){}})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="google-site-verification" content="TvLzqDaQqwgM3BPJuSlHDsm_eZag6c8plDgFr6pxjIE" />
+<title>דרך הארץ</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2310b981'/%3E%3Cstop offset='1' stop-color='%23059669'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='24' cy='24' r='22' fill='url(%23g)'/%3E%3Ccircle cx='24' cy='24' r='18.6' fill='none' stroke='%23fff' stroke-width='.9' stroke-dasharray='1.6 2.6' opacity='.55'/%3E%3Ccircle cx='24' cy='15' r='4.6' fill='%23fff' opacity='.95'/%3E%3Cpath fill='%23fff' opacity='.95' d='M15 37L33 37 26.2 21 21.8 21Z'/%3E%3Crect fill='%23047857' x='23.1' y='22' width='1.8' height='2.4' rx='.4'/%3E%3Crect fill='%23047857' x='22.7' y='27' width='2.6' height='3' rx='.5'/%3E%3Crect fill='%23047857' x='22.2' y='32.2' width='3.6' height='3.6' rx='.6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&family=Frank+Ruhl+Libre:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+:root {
+  --bg:#f6f7fa; --bg2:#ffffff; --border:#e6e9ef;
+  --text:#131b2e; --text2:#6b7385;
+  --accent:#10b981; --accent2:#059669; --accent-light:#d9f7e9; --accent-dark:#047857;
+  --open:#15803d; --open-bg:#e2f8ea;
+  --closed:#c0362c; --closed-bg:#fdeceb;
+  --like:#ef4444; --paid:#b45309; --paid-bg:#fdf3e2;
+
+  /* spacing scale — used for consistent rhythm */
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:20px; --sp-6:24px; --sp-7:32px; --sp-8:40px;
+
+  --r-xs:8px; --r-sm:12px; --r:18px; --r-lg:24px; --r-xl:28px; --r-pill:999px;
+
+  --shadow-xs:0 1px 2px rgba(19,27,46,.05);
+  --shadow:0 2px 8px rgba(19,27,46,.05),0 1px 2px rgba(19,27,46,.04);
+  --shadow-md:0 8px 24px rgba(19,27,46,.08);
+  --shadow-lg:0 24px 48px rgba(19,27,46,.14);
+  --ease:cubic-bezier(.4,0,.2,1);
+  --font:'Assistant',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme]){
+  --bg:#0a0d12; --bg2:#141922; --border:#252c38;
+  --text:#e9edf4; --text2:#8b93a6;
+  --accent:#22c55e; --accent2:#16a34a; --accent-light:rgba(34,197,94,.14); --accent-dark:#4ade80;
+  --open:#4ade80; --open-bg:rgba(74,222,128,.13); --closed:#f87171; --closed-bg:rgba(248,113,113,.13);
+  --paid:#fbbf24; --paid-bg:rgba(251,191,36,.13);
+  --shadow-xs:0 1px 2px rgba(0,0,0,.4);
+  --shadow:0 2px 12px rgba(0,0,0,.45);
+  --shadow-md:0 10px 30px rgba(0,0,0,.5);
+  --shadow-lg:0 28px 60px rgba(0,0,0,.65);
+}}
+/* Manual theme toggle (overrides system preference when the user picks explicitly) */
+:root[data-theme="dark"]{
+  --bg:#0a0d12; --bg2:#141922; --border:#252c38;
+  --text:#e9edf4; --text2:#8b93a6;
+  --accent:#22c55e; --accent2:#16a34a; --accent-light:rgba(34,197,94,.14); --accent-dark:#4ade80;
+  --open:#4ade80; --open-bg:rgba(74,222,128,.13); --closed:#f87171; --closed-bg:rgba(248,113,113,.13);
+  --paid:#fbbf24; --paid-bg:rgba(251,191,36,.13);
+  --shadow-xs:0 1px 2px rgba(0,0,0,.4);
+  --shadow:0 2px 12px rgba(0,0,0,.45);
+  --shadow-md:0 10px 30px rgba(0,0,0,.5);
+  --shadow-lg:0 28px 60px rgba(0,0,0,.65);
+}
+:root[data-theme="light"]{
+  --bg:#f6f7fa; --bg2:#ffffff; --border:#e6e9ef;
+  --text:#131b2e; --text2:#6b7385;
+  --accent:#10b981; --accent2:#059669; --accent-light:#d9f7e9; --accent-dark:#047857;
+  --open:#15803d; --open-bg:#e2f8ea;
+  --closed:#c0362c; --closed-bg:#fdeceb;
+  --paid:#b45309; --paid-bg:#fdf3e2;
+  --shadow-xs:0 1px 2px rgba(19,27,46,.05);
+  --shadow:0 2px 8px rgba(19,27,46,.05),0 1px 2px rgba(19,27,46,.04);
+  --shadow-md:0 8px 24px rgba(19,27,46,.08);
+  --shadow-lg:0 24px 48px rgba(19,27,46,.14);
+}
+*,::before,::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+html,body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;direction:rtl;max-width:100vw;overflow-x:clip;font-size:15.5px;line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{letter-spacing:-.01em}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px}
+::-webkit-scrollbar-thumb:hover{background:var(--text2)}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font-family:var(--font)}
+button{letter-spacing:-.01em}
+
+/* ── HEADER ── */
+header{background:rgba(255,255,255,.78);backdrop-filter:blur(24px) saturate(1.6);-webkit-backdrop-filter:blur(24px) saturate(1.6);position:sticky;top:0;z-index:200;box-shadow:0 1px 0 rgba(19,27,46,.03)}
+header::after{content:'';display:block;height:2px;background:linear-gradient(90deg,transparent,var(--accent) 20%,#6366f1 50%,var(--accent) 80%,transparent);opacity:.5}
+@media(prefers-color-scheme:dark){:root:not([data-theme]) header{background:rgba(10,13,18,.78)}}
+:root[data-theme="dark"] header{background:rgba(10,13,18,.78)}
+.header-row1{max-width:1400px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;gap:18px}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0;transition:.2s var(--ease)}
+.logo-icon-svg{width:38px;height:38px;flex-shrink:0;display:block;transition:.3s var(--ease)}
+.logo:hover .logo-icon-svg{transform:rotate(-6deg) scale(1.05)}
+.logo-word{font-family:'Frank Ruhl Libre',serif;font-weight:900;font-size:22px;line-height:1;display:inline-flex;gap:5px}
+.logo-word .lw1{color:#047857}
+.logo-word .lw2{color:var(--text)}
+.auth-logo-icon-svg{width:64px;height:64px;display:block;margin:0 auto 14px}
+.auth-logo-word{font-family:'Frank Ruhl Libre',serif;font-weight:900;font-size:32px;line-height:1;text-align:center;display:block;margin-bottom:10px}
+.auth-logo-word .lw1{color:#047857}
+.auth-logo-word .lw2{color:var(--text)}
+
+/* ── SEARCH BAR ── */
+.h-search-wrap{flex:1;max-width:440px;position:relative;display:flex;align-items:center}
+.h-search-wrap input[type="text"]{width:100%;height:46px;padding:0 46px 0 46px;background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r-pill);font-size:14px;font-family:var(--font);color:var(--text);outline:none;transition:.22s var(--ease);direction:rtl;box-shadow:var(--shadow-xs)}
+.h-search-wrap input:focus{border-color:var(--accent);background:var(--bg2);box-shadow:0 0 0 4px var(--accent-light),var(--shadow)}
+.h-search-wrap input::placeholder{color:var(--text2)}
+.h-search-icon{position:absolute;right:17px;top:50%;transform:translateY(-50%);color:var(--text2);pointer-events:none;display:flex;transition:.2s}
+.h-search-icon svg{width:15px;height:15px}
+.h-search-wrap input:focus~.h-search-icon{color:var(--accent)}
+
+.h-search-action{position:absolute;left:8px;top:50%;transform:translateY(-50%);background:none;border:none;border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text2);padding:0;transition:.2s var(--ease)}
+.h-search-action:hover{background:var(--border);color:var(--text)}
+.h-search-action svg{width:16px;height:16px;position:absolute;transition:.15s}
+.h-search-action .ic-mic{opacity:1;transform:scale(1)}
+.h-search-action .ic-clear{opacity:0;transform:scale(.5)}
+.h-search-wrap.has-value .h-search-action .ic-mic{opacity:0;transform:scale(.5)}
+.h-search-wrap.has-value .h-search-action .ic-clear{opacity:1;transform:scale(1)}
+.h-search-action.listening{color:#fff;background:var(--like)}
+.h-search-action.listening::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--like);animation:micPulse 1.2s ease-out infinite}
+@keyframes micPulse{from{transform:scale(.8);opacity:.9}to{transform:scale(1.5);opacity:0}}
+
+/* Search suggestions dropdown */
+.search-suggest{position:absolute;top:calc(100% + 10px);right:0;left:0;background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow-lg);z-index:300;overflow:hidden;display:none}
+.search-suggest.open{display:block;animation:slideUp .18s var(--ease)}
+.suggest-item{display:flex;align-items:center;gap:10px;padding:12px 16px;cursor:pointer;transition:.15s;font-size:14px}
+.suggest-item:hover{background:var(--accent-light)}
+.suggest-item svg{flex-shrink:0;color:var(--text2)}
+.suggest-cat{font-size:11px;color:var(--text2);margin-right:auto}
+.suggest-empty{padding:16px;text-align:center;color:var(--text2);font-size:13px}
+
+.h-user{display:flex;align-items:center;gap:10px;flex-shrink:0;margin-right:auto}
+.h-icon-actions{display:flex;align-items:center;gap:2px;background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r-pill);padding:3px;flex-shrink:0;box-shadow:var(--shadow-xs)}
+.h-app-btn{width:36px;height:36px;border-radius:50%;background:none;border:none;display:flex;align-items:center;justify-content:center;color:var(--text2);flex-shrink:0;transition:.2s var(--ease);cursor:pointer}
+.h-app-btn svg{width:17px;height:17px}
+.h-app-btn:hover{background:var(--accent-light);color:var(--accent-dark);transform:translateY(-1px)}
+.user-pic{width:32px;height:32px;border-radius:50%;object-fit:cover;border:2px solid var(--accent)}
+.user-name{font-size:13px;font-weight:600;max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btn-out{font-size:12px;font-weight:600;color:var(--text2);background:var(--bg2);border:1.5px solid var(--border);padding:6px 12px;border-radius:var(--r-xs);cursor:pointer;transition:.2s}
+.btn-out:hover{border-color:var(--text2);color:var(--text)}
+.btn-admin{font-size:12px;font-weight:700;color:#fff;background:linear-gradient(135deg,#7c3aed,#6d28d9);border:none;padding:6px 12px;border-radius:var(--r-xs);cursor:pointer;transition:.2s;box-shadow:0 3px 10px rgba(124,58,237,.3)}
+.btn-admin:hover{opacity:.9;transform:translateY(-1px)}
+
+/* Category nav strip */
+.header-row2{max-width:1400px;margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center;gap:6px;overflow-x:auto;scrollbar-width:none;border-top:1px solid var(--border);-webkit-mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent);mask-image:linear-gradient(90deg,transparent,#000 24px,#000 calc(100% - 24px),transparent)}
+.header-row2::-webkit-scrollbar{display:none}
+.cat-btn{display:flex;align-items:center;gap:6px;padding:7px 15px;border-radius:var(--r-pill);border:1.5px solid var(--border);background:var(--bg2);color:var(--text2);font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap;transition:.2s var(--ease);font-family:var(--font);flex-shrink:0}
+.cat-btn svg{width:13px;height:13px;flex-shrink:0}
+.cat-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light);transform:translateY(-1px)}
+.cat-btn.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-color:transparent;box-shadow:0 4px 10px rgba(16,185,129,.3)}
+.region-btn{display:flex;align-items:center;gap:5px;padding:7px 15px;border-radius:var(--r-pill);border:1.5px solid var(--border);background:var(--bg2);color:var(--text2);font-size:12.5px;font-weight:600;cursor:pointer;transition:.2s var(--ease);font-family:var(--font);flex-shrink:0}
+.region-btn:hover{transform:translateY(-1px)}
+.region-btn.active{background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;border-color:transparent;box-shadow:0 4px 10px rgba(99,102,241,.3)}
+
+/* ── SIDEBAR ── */
+.app-layout{display:flex;max-width:1400px;margin:0 auto;padding:28px 24px;gap:24px;align-items:flex-start}
+.sidebar{width:72px;flex-shrink:0;position:sticky;top:132px;display:flex;flex-direction:column;gap:5px;align-self:flex-start;background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);padding:10px 8px;box-shadow:var(--shadow)}
+.sb-btn{display:flex;flex-direction:column;align-items:center;gap:5px;padding:11px 6px;border-radius:var(--r-sm);border:none;background:none;cursor:pointer;color:var(--text2);font-size:10.5px;font-weight:600;font-family:var(--font);transition:background .2s var(--ease),color .2s var(--ease);width:100%;position:relative}
+.sb-btn:hover{background:var(--bg);color:var(--accent)}
+.sb-btn.active{background:linear-gradient(135deg,var(--accent-light),transparent);color:var(--accent)}
+.sb-btn svg{width:22px;height:22px;flex-shrink:0;transition:transform .32s var(--ease)}
+.sb-btn.active svg{transform:scale(1.08)}
+.sb-indicator{position:absolute;right:-8px;width:3px;height:18px;background:linear-gradient(var(--accent),var(--accent2));border-radius:var(--r-pill);opacity:0;transition:top .32s cubic-bezier(.34,1.56,.64,1),opacity .2s var(--ease);pointer-events:none;z-index:1}
+.sb-sep{height:1px;background:var(--border);margin:6px 8px}
+.app-main{flex:1;min-width:0}
+
+/* ── APP ── */
+#app{display:none}
+.app-inner{padding:0}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.toolbar-title{font-size:23px;font-weight:800;letter-spacing:-.4px;display:flex;align-items:center;gap:9px}
+.toolbar-title::before{content:'';width:7px;height:22px;border-radius:var(--r-pill);background:linear-gradient(var(--accent),#6366f1);display:inline-block}
+.toolbar-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sort-select{font-size:13px;font-weight:600;font-family:var(--font);color:var(--text);background:var(--bg2);border:1.5px solid var(--border);padding:8px 32px 8px 14px;border-radius:var(--r-pill);cursor:pointer;outline:none;transition:.2s;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7385' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-size:13px;box-shadow:var(--shadow-xs)}
+.sort-select:focus{border-color:var(--accent)}
+.btn-add{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;padding:10px 20px;border-radius:var(--r-pill);font-size:13.5px;font-weight:700;font-family:var(--font);cursor:pointer;transition:.2s var(--ease);display:flex;align-items:center;gap:7px;box-shadow:0 4px 14px rgba(16,185,129,.3)}
+.btn-add:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(16,185,129,.4)}
+.btn-add svg{width:14px;height:14px;stroke:#fff;fill:none;flex-shrink:0;transition:.2s}
+.btn-add:hover svg{transform:rotate(90deg)}
+
+#auth-wall{min-height:calc(100vh - 60px);display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at 50% 0%,var(--accent-light),transparent 55%)}
+#boot-loading{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;background:var(--bg)}
+html[data-boot="1"] #auth-wall{display:none}
+html[data-boot="1"] #boot-loading{display:flex}
+.auth-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-xl);padding:44px 44px 40px;max-width:440px;width:100%;text-align:center;box-shadow:0 30px 70px rgba(11,17,28,.14)}
+.auth-card>p{color:var(--text2);font-size:15px;line-height:1.65;margin-bottom:26px}
+.auth-tabs{display:flex;background:var(--bg);border-radius:var(--r-pill);padding:4px;gap:4px;margin-bottom:22px}
+.auth-tabs button{flex:1;padding:9px;background:none;border:none;font-size:14px;font-weight:700;font-family:var(--font);color:var(--text2);cursor:pointer;border-radius:var(--r-pill);transition:.2s}
+.auth-tabs button.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 4px 12px rgba(16,185,129,.3)}
+.local-form{display:flex;flex-direction:column;gap:11px;margin-bottom:18px;text-align:right}
+.local-form input{padding:12px 16px;border-radius:var(--r-sm);border:1.5px solid var(--border);background:var(--bg);color:var(--text);font-size:14px;font-family:var(--font);outline:none;transition:.2s}
+.local-form input:focus{border-color:var(--accent);background:var(--bg2);box-shadow:0 0 0 4px var(--accent-light)}
+.local-form button{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;padding:13px;border-radius:var(--r-sm);font-size:15px;font-weight:700;font-family:var(--font);cursor:pointer;transition:.2s var(--ease);box-shadow:0 8px 20px rgba(16,185,129,.28)}
+.local-form button:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(16,185,129,.38)}
+.auth-or{text-align:center;color:var(--text2);font-size:13px;margin:16px 0;position:relative}
+.auth-or::before,.auth-or::after{content:'';position:absolute;top:50%;width:38%;height:1px;background:var(--border)}
+.auth-or::before{right:0}.auth-or::after{left:0}
+#google-btn{display:flex;justify-content:center;min-height:44px}
+
+/* ── CONTRIBUTE ── */
+#contribute-wall{min-height:calc(100vh - 60px);display:none;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at 50% 0%,var(--accent-light),transparent 55%)}
+.contribute-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-xl);padding:44px;max-width:460px;width:100%;text-align:center;box-shadow:0 30px 70px rgba(11,17,28,.14)}
+.contribute-card h2{font-size:25px;font-weight:800;margin-bottom:12px}
+.contribute-card p{color:var(--text2);margin-bottom:30px;font-size:15px;line-height:1.65}
+.contribute-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+
+/* ── GRID ── */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);transition:.32s var(--ease);display:flex;flex-direction:column;cursor:pointer}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--accent)}
+.card-img{height:190px;overflow:hidden;position:relative;flex-shrink:0;background:var(--accent-light);border-radius:var(--r-lg) var(--r-lg) 0 0}
+.card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55),transparent 55%);pointer-events:none}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.card:hover .card-img img{transform:scale(1.08)}
+.card-img-count{position:absolute;bottom:10px;left:10px;background:rgba(19,27,46,.55);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:var(--r-pill);backdrop-filter:blur(6px);z-index:2}
+.card-img-map{height:190px;position:relative;flex-shrink:0;z-index:1;overflow:hidden;border-radius:var(--r-lg) var(--r-lg) 0 0}
+.card-img-placeholder{height:190px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--accent);gap:8px;background:linear-gradient(135deg,var(--accent-light),var(--bg));flex-shrink:0;border-radius:var(--r-lg) var(--r-lg) 0 0;overflow:hidden}
+.card-img-placeholder svg{opacity:.5}
+.card-body{padding:18px;flex:1;display:flex;flex-direction:column;gap:9px}
+.card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.card-name{font-size:16.5px;font-weight:800;line-height:1.35;letter-spacing:-.2px}
+.card-badges{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:2px}
+.badge{font-size:11px;font-weight:700;padding:3px 9px;border-radius:var(--r-pill);white-space:nowrap}
+.b-open{color:var(--open);background:var(--open-bg)}
+.b-closed{color:var(--closed);background:var(--closed-bg)}
+.b-paid{color:var(--paid);background:var(--paid-bg)}
+.b-free{color:var(--open);background:var(--open-bg)}
+.b-region{color:#6366f1;background:#eef2ff}
+.b-distance{color:var(--accent-dark);background:var(--accent-light);display:inline-flex;align-items:center;gap:3px}
+.b-distance svg{width:10px;height:10px;flex-shrink:0}
+.d-row.d-distance{color:var(--accent-dark);font-weight:700}
+.card-cat{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));padding:4px 11px;border-radius:var(--r-xs);align-self:flex-start;box-shadow:0 3px 8px rgba(16,185,129,.25)}
+.card-cat svg{width:12px;height:12px}
+.card-desc{font-size:13.5px;color:var(--text2);line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-addr{font-size:12.5px;color:var(--text2);display:flex;align-items:center;gap:5px}
+.card-addr svg{width:12px;height:12px;color:var(--accent);flex-shrink:0}
+.card-footer{margin-top:auto;padding-top:14px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.card-author{display:flex;align-items:center;gap:7px}
+.a-pic{width:23px;height:23px;border-radius:50%;object-fit:cover}
+.a-name{font-size:11.5px;font-weight:500;color:var(--text2)}
+.card-acts{display:flex;align-items:center;gap:6px}
+.btn-like{display:flex;align-items:center;gap:5px;background:var(--bg);border:1.5px solid var(--border);padding:6px 11px;border-radius:var(--r-pill);cursor:pointer;font-size:12px;font-weight:700;color:var(--text2);transition:.2s;font-family:var(--font)}
+.btn-like:hover{border-color:var(--like);color:var(--like);background:var(--closed-bg)}
+.btn-like.liked{background:var(--closed-bg);border-color:var(--like);color:var(--like)}
+.btn-like .hrt{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.5;transition:.2s}
+.btn-like.liked .hrt{fill:var(--like)}
+.btn-del,.btn-edit{background:none;border:none;cursor:pointer;color:var(--text2);padding:6px;border-radius:var(--r-xs);transition:.2s}
+.btn-del:hover{color:var(--closed);background:var(--closed-bg)}
+.btn-del svg,.btn-edit svg{width:14px;height:14px}
+.btn-edit:hover{color:var(--accent);background:var(--accent-light)}
+
+/* ── HOME HIGHLIGHTS (a few picks per category) ── */
+.home-row{margin-bottom:30px}
+.home-row-hdr{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.home-row-ttl{display:flex;align-items:center;gap:9px;min-width:0}
+.home-row-ic{width:34px;height:34px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--accent-light),transparent);color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.home-row-ic svg{width:17px;height:17px}
+.home-row-name{font-size:16px;font-weight:800;letter-spacing:-.2px}
+.home-row-cnt{font-size:12px;color:var(--text2);font-weight:600}
+.home-row-more{display:flex;align-items:center;gap:4px;background:var(--bg2);border:1.5px solid var(--border);color:var(--text2);font-size:12.5px;font-weight:700;padding:7px 14px;border-radius:var(--r-pill);cursor:pointer;white-space:nowrap;transition:.2s var(--ease);flex-shrink:0;font-family:var(--font)}
+.home-row-more:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+.home-row-more svg{width:12px;height:12px;transition:.2s}
+.home-row-more:hover svg{transform:translateX(-2px)}
+.home-row-scroll{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:4px;scrollbar-width:none;margin:0 -2px;padding:2px}
+.home-row-scroll::-webkit-scrollbar{display:none}
+.home-row-scroll .card{flex:0 0 264px;scroll-snap-align:start}
+
+/* ── MODALS ── */
+.modal-backdrop{display:none;position:fixed;inset:0;background:rgba(9,14,23,.6);backdrop-filter:blur(10px);z-index:200;align-items:center;justify-content:center;padding:16px}
+.modal-backdrop.open{display:flex;animation:fadeIn .2s}
+@keyframes fadeIn{from{opacity:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.modal{background:var(--bg2);border-radius:var(--r-xl);width:100%;max-width:600px;max-height:92vh;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(11,17,28,.3);animation:slideUp .32s var(--ease);border:1px solid var(--border)}
+@keyframes slideUp{from{transform:translateY(22px) scale(.97);opacity:0}}
+.modal-hdr{padding:20px 26px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:var(--bg2);position:sticky;top:0;z-index:10;border-radius:var(--r-xl) var(--r-xl) 0 0}
+.modal-ttl{font-size:17.5px;font-weight:800;letter-spacing:-.2px}
+.modal-x{background:var(--bg);border:1.5px solid var(--border);cursor:pointer;color:var(--text);width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.25s var(--ease)}
+.modal-x:hover{background:var(--closed-bg);border-color:var(--closed);color:var(--closed);transform:rotate(90deg)}
+.modal-x svg{width:16px;height:16px}
+.modal-body{padding:22px 26px;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;gap:18px}
+.field{display:flex;flex-direction:column;gap:7px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{font-size:13px;font-weight:700}
+label span{font-weight:400;color:var(--text2);font-size:12px}
+input[type=text],input[type=url],input[type=number],input[type=email],input[type=password],textarea,select{width:100%;padding:12px 15px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:14px;font-family:var(--font);color:var(--text);transition:.2s;outline:none;direction:rtl}
+input:focus,textarea:focus,select:focus{border-color:var(--accent);background:var(--bg2);box-shadow:0 0 0 4px var(--accent-light)}
+textarea{min-height:92px;resize:vertical}
+/* Rich text editor */
+.rich-toolbar{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:5px}
+.rich-toolbar button{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-xs);padding:5px 10px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--font);color:var(--text);transition:.15s;line-height:1.3}
+.rich-toolbar button:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+.rich-desc{width:100%;min-height:92px;padding:12px 15px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:14px;font-family:var(--font);color:var(--text);transition:.2s;outline:none;direction:rtl;resize:vertical;line-height:1.65;overflow-y:auto}
+.rich-desc:focus{border-color:var(--accent);background:var(--bg2);box-shadow:0 0 0 4px var(--accent-light)}
+.rich-desc:empty:before{content:attr(data-placeholder);color:var(--text2);pointer-events:none}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-sm);transition:.2s}
+.toggle-row:has(.toggle input:checked){border-color:var(--accent-light);background:var(--accent-light)}
+.toggle-lbl{font-size:14px;font-weight:600}
+.toggle{position:relative;width:44px;height:24px;cursor:pointer;flex-shrink:0}
+.toggle input{opacity:0;width:0;height:0}
+.toggle-tr{position:absolute;inset:0;background:var(--border);border-radius:var(--r-pill);transition:.25s}
+.toggle input:checked+.toggle-tr{background:linear-gradient(135deg,var(--accent),var(--accent2))}
+.toggle-th{position:absolute;top:3px;right:3px;width:18px;height:18px;background:#fff;border-radius:50%;transition:.25s var(--ease);box-shadow:0 2px 4px rgba(0,0,0,.15)}
+.toggle input:checked~.toggle-th{right:auto;left:3px}
+.map-picker{height:210px;border-radius:var(--r-sm);overflow:hidden;border:1.5px solid var(--border);position:relative;z-index:1}
+.map-row{display:flex;gap:8px;margin-bottom:8px}
+.map-row input{flex:1}
+.btn-geo{background:var(--bg2);color:var(--text);border:1.5px solid var(--border);padding:0 16px;border-radius:var(--r-sm);cursor:pointer;font-size:13px;font-weight:700;font-family:var(--font);white-space:nowrap;transition:.2s;flex-shrink:0}
+.btn-geo:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+.map-hint{position:absolute;bottom:8px;right:8px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-xs);padding:4px 10px;font-size:11px;font-weight:600;color:var(--text2);z-index:10;pointer-events:none}
+.coords-row{display:none}
+.btn-submit{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;padding:14px;border-radius:var(--r-sm);font-size:15px;font-weight:800;font-family:var(--font);cursor:pointer;transition:.2s var(--ease);width:100%;box-shadow:0 8px 20px rgba(16,185,129,.32)}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(16,185,129,.4)}
+.btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.err-msg{font-size:13px;font-weight:600;color:var(--closed);padding:12px 15px;background:var(--closed-bg);border-radius:var(--r-sm);border:1px solid #f6c9c5}
+
+/* Multi-step form */
+.step-progress{display:flex;align-items:center;gap:8px;padding:0 0 4px}
+.step-dot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;border:2px solid var(--border);color:var(--text2);transition:.3s var(--ease);flex-shrink:0}
+.step-dot.done{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent;color:#fff}
+.step-dot.active{border-color:var(--accent);color:var(--accent);box-shadow:0 0 0 5px var(--accent-light)}
+.step-line{flex:1;height:2px;background:var(--border);border-radius:2px;transition:.3s}
+.step-line.done{background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.step-label{font-size:12px;font-weight:600;color:var(--text2);text-align:center;margin-top:4px}
+.step-panel{display:none;flex-direction:column;gap:18px;animation:stepIn .25s}
+.step-panel.active{display:flex}
+@keyframes stepIn{from{opacity:0;transform:translateX(10px)}}
+.step-nav{display:flex;gap:10px}
+.btn-next,.btn-prev{flex:1;padding:13px;border-radius:var(--r-sm);font-size:14px;font-weight:700;font-family:var(--font);cursor:pointer;border:none;transition:.2s var(--ease)}
+.btn-next{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 6px 16px rgba(16,185,129,.28)}
+.btn-next:hover{transform:translateY(-1px)}
+.btn-prev{background:var(--bg);border:1.5px solid var(--border);color:var(--text2)}
+.btn-prev:hover{border-color:var(--text2);color:var(--text)}
+
+/* Image upload */
+.img-drop{border:2px dashed var(--border);border-radius:var(--r-sm);padding:32px 20px;text-align:center;cursor:pointer;transition:.2s var(--ease);position:relative;background:var(--bg)}
+.img-drop:hover{border-color:var(--accent);background:var(--accent-light);transform:translateY(-1px)}
+.img-drop input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.img-drop svg{width:36px;height:36px;color:var(--accent);opacity:.7;margin-bottom:8px}
+.img-drop p{font-size:13px;font-weight:600;color:var(--text2)}
+.img-drop p small{display:block;font-size:11px;margin-top:3px;font-weight:400}
+.imgs-preview{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.imgs-preview img{width:70px;height:70px;object-fit:cover;border-radius:var(--r-xs);border:2px solid var(--border)}
+.region-tag{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;color:#6366f1;background:#eef2ff;padding:6px 13px;border-radius:var(--r-pill);margin-top:4px}
+.region-tag svg{width:14px;height:14px}
+
+
+.detail-inner{overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;flex:1;min-height:0}
+.gallery-wrap{background:#0d1117;border-radius:22px 22px 0 0;overflow:hidden;position:relative;height:300px;max-height:420px}
+.gallery-scroll{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.gallery-scroll::-webkit-scrollbar{display:none}
+.gallery-scroll img{scroll-snap-align:center;flex:0 0 100%;width:100%;height:100%;object-fit:cover;background:#0d1117}
+.gallery-dots{display:flex;justify-content:center;gap:5px;position:absolute;bottom:10px;left:0;right:0}
+.gallery-dots span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:.2s}
+.gallery-dots span.act{background:#fff;width:18px;border-radius:3px}
+.detail-map-wrap{padding:0 20px;margin-bottom:4px}
+.detail-map{height:220px;border-radius:var(--r-sm);border:1.5px solid var(--border);z-index:1}
+.d-body{padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+.d-header{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.d-name{font-size:24px;font-weight:800;line-height:1.2;letter-spacing:-.4px}
+.d-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.d-desc{font-size:15px;color:var(--text2);line-height:1.7}
+.d-row{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--text2);font-weight:500}
+.d-row svg{width:17px;height:17px;color:var(--accent);flex-shrink:0}
+.d-row a{color:var(--accent);font-weight:700}
+.d-row a:hover{text-decoration:underline}
+.d-actions{display:flex;gap:10px;padding-top:14px;border-top:1px solid var(--border);flex-wrap:wrap}
+.btn-lk-lg{display:flex;align-items:center;gap:7px;background:var(--bg);border:1.5px solid var(--border);padding:9px 18px;border-radius:var(--r-pill);cursor:pointer;font-size:14px;font-weight:700;font-family:'Assistant',sans-serif;color:var(--text2);transition:.2s var(--ease)}
+.btn-lk-lg:hover{border-color:var(--like);color:var(--like);background:var(--closed-bg)}
+.btn-lk-lg.liked{background:var(--closed-bg);border-color:var(--like);color:var(--like)}
+.btn-lk-lg .hrt{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2.5}
+.btn-lk-lg.liked .hrt{fill:var(--like)}
+.btn-goto{display:flex;align-items:center;gap:7px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:9px 18px;border-radius:var(--r-pill);font-size:14px;font-weight:700;transition:.2s var(--ease);box-shadow:0 6px 16px rgba(16,185,129,.28)}
+.btn-goto:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(16,185,129,.38)}
+.btn-goto svg{width:15px;height:15px;stroke:#fff;fill:none}
+.btn-edit-d{display:flex;align-items:center;gap:6px;background:var(--bg);border:1.5px solid var(--border);padding:9px 16px;border-radius:var(--r-pill);cursor:pointer;font-size:13px;font-weight:700;font-family:'Assistant',sans-serif;color:var(--text2);transition:.2s}
+.btn-edit-d:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+.btn-del-d{display:flex;align-items:center;gap:6px;background:none;border:1.5px solid var(--border);padding:9px 14px;border-radius:var(--r-pill);cursor:pointer;font-size:13px;font-weight:700;font-family:'Assistant',sans-serif;color:var(--text2);transition:.2s;margin-right:auto}
+.btn-del-d:hover{border-color:var(--closed);color:var(--closed);background:var(--closed-bg)}
+
+/* ── DETAIL PAGE (standalone, hash-routed) ── */
+#detail-page{display:none;background:var(--bg);min-height:calc(100vh - 64px)}
+.dp-topbar{position:sticky;top:64px;z-index:150;background:rgba(255,255,255,.78);backdrop-filter:blur(22px) saturate(1.6);-webkit-backdrop-filter:blur(22px) saturate(1.6);border-bottom:1px solid var(--border)}
+@media(prefers-color-scheme:dark){:root:not([data-theme]) .dp-topbar{background:rgba(10,13,18,.78)}}
+:root[data-theme="dark"] .dp-topbar{background:rgba(10,13,18,.78)}
+.dp-topbar-inner{max-width:1180px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:12px}
+.dp-back{display:flex;align-items:center;gap:6px;background:var(--bg2);border:1.5px solid var(--border);color:var(--text);font-weight:700;font-size:13px;padding:8px 15px;border-radius:var(--r-pill);cursor:pointer;transition:.2s var(--ease);flex-shrink:0;font-family:var(--font)}
+.dp-back:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light);transform:translateX(2px)}
+.dp-back svg{width:15px;height:15px;flex-shrink:0}
+.dp-topbar-title{font-size:14.5px;font-weight:800;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text2)}
+.dp-share{display:flex;align-items:center;gap:6px;background:var(--bg);border:1.5px solid var(--border);color:var(--text2);font-weight:700;font-size:12.5px;padding:8px 14px;border-radius:var(--r-pill);cursor:pointer;transition:.2s var(--ease);flex-shrink:0;font-family:var(--font)}
+.dp-share:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+.dp-share svg{width:14px;height:14px;flex-shrink:0}
+
+@keyframes dpFadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes dpZoomIn{from{transform:scale(1.06)}to{transform:scale(1)}}
+
+.dp-hero{position:relative;height:420px;overflow:hidden;background:linear-gradient(135deg,var(--accent-light),var(--bg2) 70%)}
+.dp-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;animation:dpZoomIn .6s var(--ease) both}
+.dp-hero img.act{display:block}
+.dp-hero-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:18px 22px;background:linear-gradient(to top,rgba(6,10,18,.82) 0%,rgba(6,10,18,.32) 42%,rgba(6,10,18,0) 68%),linear-gradient(to bottom,rgba(6,10,18,.4) 0%,rgba(6,10,18,0) 22%);pointer-events:none}
+.dp-hero-top{display:flex;justify-content:flex-end;pointer-events:auto}
+.dp-hero-bottom{pointer-events:auto}
+.dp-hero-name{font-size:29px;font-weight:800;line-height:1.2;letter-spacing:-.5px;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.35);margin-bottom:9px}
+.dp-hero-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.dp-hero-empty .dp-hero-overlay{background:linear-gradient(to top,rgba(6,10,18,.55) 0%,rgba(6,10,18,.12) 55%,rgba(6,10,18,0) 75%)}
+.dp-hero-noimg{position:absolute;bottom:16px;left:18px;display:flex;align-items:center;gap:6px;background:rgba(6,10,18,.4);color:#fff;font-size:11.5px;font-weight:700;padding:5px 11px;border-radius:var(--r-pill);backdrop-filter:blur(4px)}
+.dp-hero-noimg svg{width:14px;height:14px}
+.dp-gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(19,27,46,.5);color:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s var(--ease);backdrop-filter:blur(4px);z-index:5;padding:0}
+.dp-gallery-arrow:hover{background:var(--accent);transform:translateY(-50%) scale(1.08)}
+.dp-gallery-arrow.next{left:14px}
+.dp-gallery-arrow.prev{right:14px}
+.dp-gallery-arrow svg{width:18px;height:18px;flex-shrink:0}
+.dp-gallery-count{position:absolute;bottom:16px;left:18px;background:rgba(19,27,46,.5);color:#fff;font-size:11px;font-weight:700;padding:3px 9px;border-radius:var(--r-pill);backdrop-filter:blur(4px);z-index:5}
+
+.dp-wrap{max-width:1180px;margin:0 auto;padding:28px 24px 64px}
+.dp-layout{display:grid;grid-template-columns:1fr 328px;gap:24px;align-items:start}
+.dp-main-col{min-width:0;background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow-md);overflow:hidden;animation:dpFadeUp .45s var(--ease) both}
+.dp-side-col{position:sticky;top:124px;display:flex;flex-direction:column;gap:14px;animation:dpFadeUp .45s var(--ease) .08s both}
+.dp-side-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px;transition:.2s var(--ease)}
+.dp-side-card:hover{box-shadow:var(--shadow-md);border-color:var(--accent)}
+.dp-side-card h4{font-size:12px;font-weight:800;color:var(--text2);text-transform:uppercase;letter-spacing:.4px}
+.dp-poster{display:flex;align-items:center;gap:10px;cursor:pointer;border-radius:var(--r-sm);padding:4px;margin:-4px;transition:.2s}
+.dp-poster:hover{background:var(--accent-light)}
+.dp-poster img{width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.dp-poster-name{font-weight:700;font-size:14px}
+.dp-poster-count{font-size:11.5px;color:var(--text2)}
+
+@media(max-width:900px){
+  .dp-topbar{top:0}
+  .dp-layout{grid-template-columns:1fr}
+  .dp-side-col{position:static}
+  .dp-wrap{padding:0 0 48px}
+  .dp-hero{height:280px;border-radius:0}
+  .dp-main-col{border-radius:0;border-left:none;border-right:none}
+}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--bg2);border:1.5px solid var(--accent);border-radius:12px;padding:12px 20px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;z-index:300;transition:.35s var(--ease);white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast button{background:var(--accent);color:#fff;border:none;padding:5px 12px;border-radius:8px;font-size:12px;font-weight:700;font-family:'Assistant',sans-serif;cursor:pointer}
+
+/* ── ADMIN MODAL — REDESIGN ── */
+#admin-modal .modal{max-width:760px}
+#admin-modal .modal-hdr{padding:20px 26px}
+.admin-hero{display:flex;align-items:center;gap:12px;min-width:0}
+.admin-hero-icon{width:42px;height:42px;border-radius:var(--r-sm);background:linear-gradient(135deg,#7c3aed,#6d28d9);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 6px 16px rgba(124,58,237,.32)}
+.admin-hero-icon svg{width:20px;height:20px;stroke:#fff}
+.admin-hero-txt{min-width:0}
+.admin-hero-ttl{font-size:16.5px;font-weight:800;line-height:1.25}
+.admin-hero-sub{font-size:12px;color:var(--text2);margin-top:1px;font-weight:500}
+
+.admin-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat-card{position:relative;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:14px 12px 12px;text-align:center;overflow:hidden;transition:.2s var(--ease)}
+.stat-card::before{content:'';position:absolute;top:0;right:0;left:0;height:3px;background:var(--stat-c,var(--accent))}
+.stat-card:hover{border-color:var(--stat-c,var(--accent));transform:translateY(-1px);box-shadow:var(--shadow)}
+.stat-card .num{font-size:23px;font-weight:800;color:var(--stat-c,var(--accent));line-height:1.2;font-variant-numeric:tabular-nums}
+.stat-card .lbl{font-size:11px;font-weight:600;color:var(--text2);margin-top:3px}
+
+.admin-section-lbl{font-size:12px;font-weight:800;color:var(--text2);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
+.admin-section-lbl .cnt-pill{background:var(--accent-light);color:var(--accent-dark);font-size:11px;font-weight:800;padding:2px 9px;border-radius:20px}
+
+.admin-card{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r);padding:16px}
+
+.admin-user-row{display:flex;align-items:center;gap:11px;padding:10px 4px;transition:.15s}
+.admin-user-row img{width:34px;height:34px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.admin-user-row .info{flex:1;min-width:0}
+.admin-user-row .info b{font-size:13px;font-weight:700;display:block}
+.admin-user-row .info small{font-size:11px;color:var(--text2)}
+.admin-user-row .cnt{font-size:11px;font-weight:700;color:var(--accent-dark);background:var(--accent-light);padding:3px 9px;border-radius:20px;flex-shrink:0;white-space:nowrap}
+
+/* ── MISC ── */
+.empty{text-align:center;padding:80px 20px;color:var(--text2);grid-column:1/-1}
+.empty svg{width:48px;height:48px;margin-bottom:14px;opacity:.35}
+.empty h3{font-size:18px;font-weight:800;margin-bottom:6px;color:var(--text)}
+.empty p{font-size:15px}
+.loading{grid-column:1/-1;text-align:center;padding:70px 20px;color:var(--text2);font-size:15px;font-weight:500;display:flex;flex-direction:column;align-items:center;gap:16px}
+.loading-spinner{width:46px;height:46px;position:relative}
+.loading-spinner::before,.loading-spinner::after{content:'';position:absolute;inset:0;border-radius:50%;border:3.5px solid transparent}
+.loading-spinner::before{border-top-color:var(--accent);border-right-color:var(--accent);animation:spin1 .9s cubic-bezier(.5,0,.5,1) infinite}
+.loading-spinner::after{border-bottom-color:var(--accent-light);border-left-color:var(--accent-light);animation:spin1 1.4s cubic-bezier(.5,0,.5,1) infinite reverse}
+@keyframes spin1{to{transform:rotate(360deg)}}
+.loading-text{font-weight:700;color:var(--text);letter-spacing:-.01em}
+.loading-sub{font-size:12.5px;color:var(--text2)}
+
+.guest-banner{background:linear-gradient(135deg,#f59e0b15,#f59e0b08);border:1.5px solid #f59e0b40;border-radius:10px;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px;font-size:13px;color:var(--text);font-weight:600}
+.guest-banner svg{flex-shrink:0;color:#f59e0b}
+.guest-banner button{background:var(--accent);color:#fff;border:none;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:700;font-family:'Assistant',sans-serif;cursor:pointer;white-space:nowrap}
+.guest-nudge-backdrop{display:none;position:fixed;inset:0;background:rgba(9,14,23,.6);backdrop-filter:blur(8px);z-index:500;align-items:center;justify-content:center;padding:16px}
+.guest-nudge-backdrop.open{display:flex;animation:fadeIn .2s}
+.guest-nudge-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-xl);padding:30px 28px 26px;max-width:360px;width:100%;text-align:center;box-shadow:0 30px 70px rgba(0,0,0,.25);animation:slideUp .32s var(--ease)}
+.guest-nudge-icon{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 10px 24px rgba(16,185,129,.35)}
+.guest-nudge-icon svg{width:26px;height:26px;stroke:#fff}
+.guest-nudge-card h3{font-size:20px;font-weight:800;margin-bottom:8px}
+.guest-nudge-card p{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:20px}
+.guest-nudge-actions{display:flex;flex-direction:column;gap:10px}
+.guest-nudge-actions .btn-reg{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;padding:13px;border-radius:var(--r-sm);font-size:14px;font-weight:800;font-family:'Assistant',sans-serif;cursor:pointer;width:100%;box-shadow:0 8px 20px rgba(16,185,129,.3);transition:.2s var(--ease)}
+.guest-nudge-actions .btn-reg:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(16,185,129,.4)}
+.guest-nudge-actions .btn-skip{background:none;border:none;color:var(--text2);font-size:13px;font-weight:600;cursor:pointer;font-family:'Assistant',sans-serif;padding:4px;transition:.2s}
+.guest-nudge-actions .btn-skip:hover{color:var(--text)}
+
+/* ── RANK BADGES ── */
+.rank-badge{font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;white-space:nowrap;letter-spacing:.3px}
+.rank-tourist{background:#fef3c7;color:#92400e}
+.rank-traveler{background:#dbeafe;color:#1e40af}
+.rank-backpacker{background:#ede9fe;color:#5b21b6}
+.rank-nomad{background:#fce7f3;color:#9d174d}
+.rank-adventurer{background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#fff}
+.author-meta{display:flex;flex-direction:column;gap:1px}
+.a-posts{font-size:10px;color:var(--text2);font-weight:500}
+
+.admin-tabs{display:flex;gap:4px;padding:4px;margin:18px 0;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-pill);flex-wrap:wrap}
+.admin-tab{white-space:nowrap;padding:8px 14px;border-radius:var(--r-pill);border:none;background:transparent;color:var(--text2);font-size:12.5px;font-weight:700;cursor:pointer;font-family:'Assistant',sans-serif;transition:.18s var(--ease);display:flex;align-items:center;justify-content:center;gap:5px}
+.admin-tab:hover{color:var(--text)}
+.admin-tab.active{background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;box-shadow:0 3px 10px rgba(124,58,237,.35)}
+.admin-tab-badge{background:rgba(255,255,255,.3);color:#fff;font-size:10px;font-weight:800;padding:1px 6px;border-radius:20px;min-width:16px;text-align:center;line-height:1.4}
+.admin-tab:not(.active) .admin-tab-badge{background:#ef4444;color:#fff}
+.admin-panel{display:none}
+.admin-panel.active{display:block;animation:fadeIn .2s}
+
+.announce-bar{background:linear-gradient(135deg,#7c3aed15,#6d28d910);border:1.5px solid #7c3aed30;border-radius:12px;padding:12px 16px;display:flex;align-items:flex-start;gap:10px;margin-bottom:18px;cursor:pointer;transition:.2s}
+.announce-bar:hover{border-color:#7c3aed60}
+.announce-bar-icon{width:32px;height:32px;background:linear-gradient(135deg,#7c3aed,#6d28d9);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.announce-bar-icon svg{width:16px;height:16px;stroke:#fff;fill:none}
+.announce-bar-body{flex:1;min-width:0}
+.announce-bar-title{font-size:13px;font-weight:800;color:#6d28d9}
+.announce-bar-text{font-size:13px;color:var(--text);line-height:1.5;margin-top:2px;white-space:pre-wrap;word-break:break-word}
+.announce-bar-date{font-size:11px;color:var(--text2);margin-top:4px}
+@media(prefers-color-scheme:dark){:root:not([data-theme]) .announce-bar{background:#2d1b6920;border-color:#7c3aed40}:root:not([data-theme]) .announce-bar-title{color:#a78bfa}}
+:root[data-theme="dark"] .announce-bar{background:#2d1b6920;border-color:#7c3aed40}
+:root[data-theme="dark"] .announce-bar-title{color:#a78bfa}
+.btn-admin-wrap{position:relative;display:inline-flex}
+.admin-notif-dot{position:absolute;top:-3px;right:-3px;width:9px;height:9px;background:#ef4444;border-radius:50%;border:2px solid var(--bg2);display:none}
+.admin-notif-dot.show{display:block}
+
+.audience-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
+.b-audience{color:#0369a1;background:#e0f2fe;font-size:11px;font-weight:700;padding:3px 8px;border-radius:20px}
+.b-modest{color:#7c3aed;background:#ede9fe;font-size:11px;font-weight:700;padding:3px 8px;border-radius:20px}
+.b-shabbat{color:#92400e;background:#fef3c7;font-size:11px;font-weight:700;padding:3px 8px;border-radius:20px}
+
+/* ── REVIEWS ── */
+.reviews-section{border-top:1px solid var(--border);padding:24px 22px 26px;display:flex;flex-direction:column;gap:16px}
+.reviews-title{font-size:15.5px;font-weight:800;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.reviews-title-lbl{display:flex;align-items:center;gap:8px}
+.reviews-title .cnt-pill{background:var(--accent-light);color:var(--accent-dark);font-size:11.5px;font-weight:800;padding:2px 10px;border-radius:20px}
+.reviews-list{display:flex;flex-direction:column;gap:10px}
+.reviews-empty{font-size:13px;color:var(--text2);text-align:center;padding:28px 10px;display:flex;flex-direction:column;align-items:center;gap:8px;background:var(--bg);border-radius:var(--r-sm);border:1.5px dashed var(--border)}
+.reviews-empty svg{width:22px;height:22px;opacity:.55}
+.review-item{background:var(--bg2);border-radius:var(--r);padding:14px 16px;display:flex;flex-direction:column;gap:9px;border:1.5px solid var(--border);box-shadow:var(--shadow-xs);transition:.2s var(--ease)}
+.review-item:hover{box-shadow:var(--shadow);transform:translateY(-1px)}
+.review-item.pending{border-style:dashed;border-color:var(--paid);background:var(--paid-bg)}
+.review-author{display:flex;align-items:center;gap:9px}
+.review-avatar{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;font-size:12px}
+.review-author-name{font-size:12.5px;font-weight:700;color:var(--text)}
+.review-author-date{font-size:11px;color:var(--text2);margin-right:auto;font-weight:500}
+.review-pending-tag{font-size:10px;font-weight:800;background:var(--bg2);color:var(--paid);padding:2px 9px;border-radius:20px;border:1px solid var(--paid)}
+.review-text{font-size:14px;color:var(--text);line-height:1.65;padding-right:39px}
+.review-item .admin-review-actions{padding-right:39px}
+.review-form{display:flex;gap:11px;background:var(--bg);border-radius:var(--r);padding:15px;border:1.5px solid var(--border)}
+.review-form-avatar{width:34px;height:34px;border-radius:50%;object-fit:cover;flex-shrink:0;font-size:13px}
+.review-form-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:9px}
+.review-form-title{font-size:12.5px;font-weight:700;color:var(--text2)}
+.review-form textarea{min-height:70px;resize:vertical;padding:11px 13px;border-radius:var(--r-sm);border:1.5px solid var(--border);background:var(--bg2);color:var(--text);font-size:13.5px;font-family:'Assistant',sans-serif;outline:none;transition:.2s;width:100%}
+.review-form textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-light)}
+.btn-review-submit{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;padding:9px 20px;border-radius:var(--r-pill);font-size:13px;font-weight:700;font-family:'Assistant',sans-serif;cursor:pointer;align-self:flex-end;transition:.2s var(--ease);box-shadow:0 4px 12px rgba(16,185,129,.25)}
+.btn-review-submit:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(16,185,129,.35)}
+.btn-review-submit:disabled{opacity:.55;cursor:not-allowed;transform:none}
+/* admin review cards */
+.admin-review-card{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:13px 15px;display:flex;flex-direction:column;gap:8px;transition:.2s}
+.admin-review-card:hover{border-color:var(--text2)}
+.admin-review-meta{font-size:12px;color:var(--text2);font-weight:600}
+.admin-review-text{font-size:13px;color:var(--text);line-height:1.55}
+.admin-review-actions{display:flex;gap:8px}
+.btn-approve{background:var(--open-bg);color:var(--open);border:1.5px solid var(--open);padding:5px 14px;border-radius:8px;font-size:12px;font-weight:700;font-family:'Assistant',sans-serif;cursor:pointer;transition:.2s}
+.btn-approve:hover{background:var(--open);color:#fff}
+.btn-reject{background:var(--closed-bg);color:var(--closed);border:1.5px solid var(--closed);padding:5px 14px;border-radius:8px;font-size:12px;font-weight:700;font-family:'Assistant',sans-serif;cursor:pointer;transition:.2s}
+.btn-reject:hover{background:var(--closed);color:#fff}
+
+/* ── ADVANCED FILTER ── */
+.adv-filter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  padding: 0;
+  margin-bottom: 0;
+  border: none;
+  box-shadow: none;
+}
+.adv-filter select {
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Assistant', sans-serif;
+  color: var(--text);
+  background: var(--bg2);
+  border: 1.5px solid var(--border);
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  outline: none;
+  transition: .2s var(--ease);
+  min-width: unset; /* ביטול רוחב מינימלי למראה צר יותר */
+  box-shadow: var(--shadow-xs);
+}
+.adv-filter select:hover {
+  border-color: var(--accent);
+}
+.adv-filter select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+.adv-clear {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text2);
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  padding: 6px 10px;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  transition: .2s;
+  font-family: 'Assistant', sans-serif;
+}
+.adv-clear:hover {
+  border-color: var(--closed);
+  color: var(--closed);
+  background: var(--closed-bg);
+}
+.filter-count {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-dark);
+  background: var(--accent-light);
+  padding: 2px 9px;
+  border-radius: 20px;
+}
+/* ── AD BANNER ── */
+#ad-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);z-index:500;align-items:center;justify-content:center;padding:20px}
+#ad-backdrop.open{display:flex;animation:fadeIn .3s}
+.ad-modal{position:relative;max-width:400px;width:100%;border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);animation:slideUp .35s var(--ease)}
+.ad-modal img{width:100%;display:block}
+.ad-close-btn{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.7);color:#fff;border:none;border-radius:50%;width:34px;height:34px;display:none;align-items:center;justify-content:center;cursor:pointer;font-size:20px;line-height:1;transition:.2s;z-index:10}
+.ad-close-btn.visible{display:flex}
+.ad-close-btn:hover{background:rgba(0,0,0,.95)}
+.ad-countdown{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.65);color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;font-family:'Assistant',sans-serif;pointer-events:none}
+
+/* ── ADMIN EXTENDED ── */
+.admin-section{margin-top:16px;border-top:1px solid var(--border);padding-top:14px}
+.admin-section h4{font-size:13px;font-weight:800;margin-bottom:10px;color:var(--text)}
+.admin-field{display:flex;flex-direction:column;gap:6px}
+.admin-field label{font-size:12px;font-weight:800;color:var(--text2)}
+.admin-field input,.admin-field textarea{padding:11px 13px;border-radius:var(--r-sm);border:1.5px solid var(--border);background:var(--bg2);color:var(--text);font-size:13.5px;font-family:'Assistant',sans-serif;outline:none;transition:.2s var(--ease);width:100%}
+.admin-field input:focus,.admin-field textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-light)}
+.admin-field textarea{min-height:90px;resize:vertical;line-height:1.6}
+.admin-ad-form{display:flex;flex-direction:column;gap:14px}
+.admin-toggle-row{display:flex;align-items:center;gap:10px;padding:2px}
+.admin-toggle-row span{font-size:13px;font-weight:700}
+.btn-save-ad{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;padding:11px;border-radius:var(--r-sm);font-size:13.5px;font-weight:800;font-family:'Assistant',sans-serif;cursor:pointer;transition:.2s var(--ease);display:flex;align-items:center;justify-content:center;gap:6px}
+.btn-save-ad:hover{opacity:.92;transform:translateY(-1px)}
+.btn-save-ad.ghost{background:var(--bg2);color:var(--text);border:1.5px solid var(--border)}
+.admin-add-admin{display:flex;gap:8px}
+.admin-add-admin input{flex:1;padding:11px 13px;border-radius:var(--r-sm);border:1.5px solid var(--border);background:var(--bg2);color:var(--text);font-size:13.5px;font-family:'Assistant',sans-serif;outline:none;direction:rtl;transition:.2s var(--ease)}
+.admin-add-admin input:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-light)}
+.btn-add-admin{background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;border:none;padding:0 18px;border-radius:var(--r-sm);font-size:13px;font-weight:800;font-family:'Assistant',sans-serif;cursor:pointer;white-space:nowrap;transition:.2s}
+.btn-add-admin:hover{opacity:.9}
+.admin-user-row .admin-badge{font-size:10px;font-weight:700;background:#7c3aed;color:#fff;padding:1px 6px;border-radius:6px;margin-right:4px}
+
+/* ── PROFILE MODAL ── */
+#profile-modal .modal{max-width:480px}
+.profile-header{display:flex;flex-direction:column;align-items:center;padding:32px 24px 22px;border-bottom:1px solid var(--border);text-align:center;gap:10px;background:linear-gradient(180deg,var(--accent-light),transparent)}
+.profile-pic-lg{width:76px;height:76px;border-radius:50%;object-fit:cover;border:3px solid var(--bg2);box-shadow:0 0 0 3px var(--accent),var(--shadow-md)}
+.profile-name{font-size:20px;font-weight:800}
+.profile-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:20px 24px;border-bottom:1px solid var(--border)}
+.profile-stat{text-align:center;padding:8px 4px;border-radius:var(--r-sm);transition:.2s}
+.profile-stat .num{font-size:22px;font-weight:800;color:var(--accent)}
+.profile-stat .lbl{font-size:11px;font-weight:600;color:var(--text2);margin-top:2px}
+.profile-locations{padding:14px 18px 18px;display:flex;flex-direction:column;gap:8px;max-height:240px;overflow-y:auto}
+.profile-loc-item{display:flex;align-items:center;gap:10px;padding:10px;background:var(--bg);border:1.5px solid transparent;border-radius:var(--r-sm);cursor:pointer;transition:.2s var(--ease)}
+.profile-loc-item:hover{background:var(--accent-light);border-color:var(--accent-light);transform:translateX(-2px)}
+.profile-loc-thumb{width:44px;height:44px;object-fit:cover;border-radius:var(--r-xs);flex-shrink:0;background:var(--border)}
+.profile-loc-name{font-size:13px;font-weight:700}
+.profile-loc-likes{font-size:11px;color:var(--text2);margin-top:2px}
+.copyright-note{font-size:10px;color:var(--text2);text-align:center;padding:8px 20px 14px;opacity:.7;line-height:1.5}
+
+/* ── CARD SLIDESHOW ON HOVER ── */
+.card-imgs-wrap{position:relative;height:190px;overflow:hidden;flex-shrink:0;background:var(--accent-light);border-radius:var(--r-lg) var(--r-lg) 0 0}
+.card-imgs-track{display:flex;height:100%;transition:transform .55s var(--ease)}
+.card-imgs-track .cis{flex:0 0 100%;height:100%;overflow:hidden}
+.card-imgs-track .cis img{width:100%;height:100%;object-fit:cover;transition:transform .55s}
+.card:hover .card-imgs-track .cis img{transform:scale(1.06)}
+.card-slide-dots{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:4px;z-index:5;pointer-events:none}
+.csd{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.5);transition:.3s}
+.csd.act{background:#fff;width:14px;border-radius:3px}
+
+@media(max-width:768px){
+  .sidebar{display:none}
+  .app-layout{padding:16px 14px;gap:0}
+}
+@media(max-width:640px){
+  .header-row1{padding:0 12px;gap:8px}
+  .h-search-wrap{max-width:none}
+  .user-name{display:none}
+  .header-row2{padding:0 12px}
+  .app-layout{padding:12px}
+  .grid{grid-template-columns:1fr;gap:12px}
+  .auth-card,.contribute-card{padding:24px 18px}
+  .auth-logo-icon-svg{width:52px;height:52px}
+  .auth-logo-word{font-size:26px}
+  .row2,.coords-row{grid-template-columns:1fr}
+  .modal-body{padding:14px 16px}
+  .d-body{padding:14px 16px}
+}
+</style>
+</head>
+<body>
+
+<div id="boot-loading"><div class="loading-spinner"></div></div>
+
+<header>
+  <div class="header-row1">
+    <a class="logo" href="#" onclick="setSidebarView('home');return false">
+      <svg class="logo-icon-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="דרך הארץ">
+        <defs>
+          <linearGradient id="logoGradHeader" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#10b981"/>
+            <stop offset="1" stop-color="#059669"/>
+          </linearGradient>
+        </defs>
+        <circle cx="24" cy="24" r="22" fill="url(#logoGradHeader)"/>
+        <circle cx="24" cy="24" r="18.6" fill="none" stroke="#fff" stroke-width=".9" stroke-dasharray="1.6 2.6" opacity=".55"/>
+        <circle cx="24" cy="15" r="4.6" fill="#fff" opacity=".95"/>
+        <path fill="#fff" opacity=".95" d="M15 37L33 37 26.2 21 21.8 21Z"/>
+        <rect fill="#047857" x="23.1" y="22" width="1.8" height="2.4" rx=".4"/>
+        <rect fill="#047857" x="22.7" y="27" width="2.6" height="3" rx=".5"/>
+        <rect fill="#047857" x="22.2" y="32.2" width="3.6" height="3.6" rx=".6"/>
+      </svg>
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <span class="logo-word"><span class="lw1">דרך</span> <span class="lw2">הארץ</span></span>
+        <div id="header-stats" style="display:none;font-size:10px;font-weight:600;color:var(--text2);gap:10px;align-items:center">
+          <span style="display:flex;align-items:center;gap:3px">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            <span id="stats-users">-</span> מטיילים
+          </span>
+          <span style="opacity:.4">·</span>
+          <span style="display:flex;align-items:center;gap:3px">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+            <span id="stats-locs">-</span> מיקומים
+          </span>
+        </div>
+      </div>
+    </a>
+    <div class="h-search-wrap" id="hdr-search-wrap">
+      <input type="text" id="header-search" placeholder="חפש מקום, קטגוריה, אזור..." oninput="onSearchInput()" onfocus="showSuggestions()" autocomplete="off">
+      <span class="h-search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+      <button class="h-search-action" id="search-action-btn" onclick="searchActionClick()" title="חיפוש קולי" aria-label="חיפוש קולי או ניקוי חיפוש">
+        <svg class="ic-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="18" x2="12" y2="22"/></svg>
+        <svg class="ic-clear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="search-suggest" id="search-suggest"></div>
+    </div>
+    <div class="h-user" id="user-area"></div>
+    <div class="h-icon-actions">
+      <button class="h-app-btn" id="theme-toggle-btn" onclick="toggleTheme()" title="החלף מצב תצוגה" aria-label="החלף מצב תצוגה כהה/בהיר">
+        <svg id="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg id="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a class="h-app-btn" href="https://apk.shnet.app/assets/uploads/files/1775984674438-b826e3d3-feba-498d-93a2-aa9c7e2d4714-%D7%9E%D7%98%D7%99%D7%99%D7%9C%D7%99%D7%9D-%D7%90%D7%A4%D7%9C%D7%99%D7%A7%D7%A6%D7%99%D7%94.apk" download title="הורידו את אפליקציית דרך הארץ" aria-label="הורידו את אפליקציית דרך הארץ">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v12"/><polyline points="7 10 12 15 17 10"/><path d="M5 19h14"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="header-row2" id="cat-nav" style="display:none"></div>
+
+</header>
+
+<div id="auth-wall">
+  <div class="auth-card">
+    <svg class="auth-logo-icon-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="דרך הארץ">
+      <defs>
+        <linearGradient id="logoGradAuth" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#10b981"/>
+          <stop offset="1" stop-color="#059669"/>
+        </linearGradient>
+      </defs>
+      <circle cx="24" cy="24" r="22" fill="url(#logoGradAuth)"/>
+      <circle cx="24" cy="24" r="18.6" fill="none" stroke="#fff" stroke-width=".9" stroke-dasharray="1.6 2.6" opacity=".55"/>
+      <circle cx="24" cy="15" r="4.6" fill="#fff" opacity=".95"/>
+      <path fill="#fff" opacity=".95" d="M15 37L33 37 26.2 21 21.8 21Z"/>
+      <rect fill="#047857" x="23.1" y="22" width="1.8" height="2.4" rx=".4"/>
+      <rect fill="#047857" x="22.7" y="27" width="2.6" height="3" rx=".5"/>
+      <rect fill="#047857" x="22.2" y="32.2" width="3.6" height="3.6" rx=".6"/>
+    </svg>
+    <span class="auth-logo-word"><span class="lw1">דרך</span> <span class="lw2">הארץ</span></span>
+    <p>גלו ושתפו מקומות מדהימים ברחבי הארץ</p>
+    <div class="auth-tabs">
+      <button class="active" onclick="switchTab('login',this)">התחברות</button>
+      <button onclick="switchTab('register',this)">הרשמה</button>
+    </div>
+    <div id="auth-verify-msg" style="display:none;background:var(--accent-light);color:var(--accent-dark);border-radius:10px;padding:10px 12px;font-size:13px;font-weight:600;text-align:center;margin-bottom:10px;line-height:1.5"></div>
+    <div id="auth-login" class="local-form">
+      <input type="email" id="login-email" placeholder="אימייל">
+      <input type="password" id="login-pass" placeholder="סיסמה">
+      <button onclick="loginEmail()">כניסה</button>
+      <button id="resend-verify-btn" style="display:none;width:100%;padding:9px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-weight:700;font-family:'Assistant',sans-serif;color:var(--text2);cursor:pointer;margin-top:2px" onclick="resendVerification()">📧 שלח שוב מייל אימות</button>
+    </div>
+    <div id="auth-register" class="local-form" style="display:none">
+      <input type="text" id="reg-name" placeholder="שם מלא">
+      <input type="email" id="reg-email" placeholder="אימייל">
+      <input type="password" id="reg-pass" placeholder="סיסמה (לפחות 6 תווים)">
+      <button onclick="registerEmail()">צור חשבון</button>
+    </div>
+    <div class="auth-or">או</div>
+    <div id="google-btn"></div>
+    <div class="auth-or" style="margin-top:14px"></div>
+    <button onclick="enterAsGuest()" style="width:100%;padding:10px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-weight:700;font-family:'Assistant',sans-serif;color:var(--text2);cursor:pointer;transition:.2s" onmouseover="this.style.borderColor='var(--text2)'" onmouseout="this.style.borderColor='var(--border)'">
+      👁️ כניסה כאורח (צפייה בלבד)
+    </button>
+  </div>
+</div>
+
+<div id="contribute-wall">
+  <div class="contribute-card">
+    <h2>ברוכים הבאים! 👋</h2>
+    <p>כדי לצפות במקומות שאחרים שיתפו, הוסיפו גם אתם מקום שאתם אוהבים.</p>
+    <div class="contribute-actions">
+      <button class="btn-add" onclick="openModal(true)">
+        <svg viewBox="0 0 24 24" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        הוסף מקום עכשיו
+      </button>
+      <button class="btn-out" style="padding:9px 18px;font-size:14px;border-radius:10px" onclick="skipContribute()">דלג לבינתיים</button>
+    </div>
+  </div>
+</div>
+
+<div id="app">
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+      <div class="sb-indicator" id="sb-indicator"></div>
+      <button class="sb-btn active" id="sb-home" onclick="setSidebarView('home')" title="דף הבית">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        הבית
+      </button>
+      <button class="sb-btn" id="sb-near" onclick="setSidebarView('near')" title="קרוב אליי">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+        קרוב
+      </button>
+      <button class="sb-btn" id="sb-popular" onclick="setSidebarView('popular')" title="פופולריים">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        פופולרי
+      </button>
+      <button class="sb-btn" id="sb-new" onclick="setSidebarView('new')" title="חדש ביותר">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        חדש
+      </button>
+      <div class="sb-sep"></div>
+      <button class="sb-btn" id="sb-add" onclick="openModal(false)" title="הוספת מקום">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        הוסף
+      </button>
+    </nav>
+
+    <!-- Main content -->
+    <div class="app-main">
+      <div class="app-inner">
+        <div class="toolbar">
+          <span class="toolbar-title" id="toolbar-title">מקומות מומלצים</span>
+          <div class="toolbar-right" style="gap: 8px;">
+            <select class="sort-select" id="sort-select" style="display:none">
+              <option value="newest">חדש ביותר</option>
+              <option value="liked">הכי אהוב</option>
+              <option value="nearest">קרוב אליי</option>
+            </select>
+            <div style="position:relative;">
+              <button class="sort-select" id="filter-toggle-btn" onclick="toggleFilterPanel()" style="display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+                סינון
+                <span id="filter-active-dot" style="display:none;width:7px;height:7px;background:var(--accent);border-radius:50%;flex-shrink:0;"></span>
+              </button>
+              <div id="filter-panel" style="display:none;position:absolute;top:calc(100% + 6px);left:0;background:var(--bg2);border:1.5px solid var(--border);border-radius:12px;padding:12px;box-shadow:var(--shadow-lg);z-index:50;flex-direction:column;gap:8px;min-width:200px;">
+                <select id="adv-region" onchange="applyAdvFilter()">
+                  <option value="">כל האזורים</option>
+                  <option value="צפון">צפון</option>
+                  <option value="מרכז">מרכז</option>
+                  <option value="דרום">דרום</option>
+                </select>
+                <select id="adv-cat" onchange="applyAdvFilter()">
+                  <option value="">כל הקטגוריות</option>
+                </select>
+                <select id="adv-audience" onchange="applyAdvFilter()">
+                  <option value="">כל הקהלים</option>
+                  <option value="משפחות">משפחות</option>
+                  <option value="צעירים">צעירים</option>
+                  <option value="מיטיבי לכת">מיטיבי לכת</option>
+                  <option value="עגלות וכיסאות גלגלים">עגלות / כיסאות גלגלים</option>
+                  <option value="קשישים">קשישים</option>
+                  <option value="ילדים קטנים">ילדים קטנים</option>
+                  <option value="כלבים">כלבים</option>
+                </select>
+                <select id="adv-paid" onchange="applyAdvFilter()">
+                  <option value="">הכל</option>
+                  <option value="free">חינם</option>
+                  <option value="paid">בתשלום</option>
+                </select>
+                <label style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;cursor:pointer;padding:2px 0">
+                  <input type="checkbox" id="adv-shabbat" onchange="applyAdvFilter()"> ✡️ שומר שבת
+                </label>
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:2px">
+                  <button class="adv-clear" onclick="clearAdvFilter()">✕ נקה</button>
+                  <span class="filter-count" id="filter-count" style="display:none"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="guest-banner" style="display:none;background:linear-gradient(135deg,#fef3c715,#fef3c730);border:1.5px solid #f59e0b50;border-radius:10px;padding:10px 16px;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;font-size:13px;color:var(--text);font-weight:600">
+          <span style="display:flex;align-items:center;gap:8px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            אתה גולש כאורח — צפייה בלבד
+          </span>
+          <button onclick="goRegister()" style="background:var(--accent);color:#fff;border:none;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:700;font-family:'Assistant',sans-serif;cursor:pointer">הצטרף עכשיו</button>
+        </div>
+        <div id="announce-bar-wrap"></div>
+        <div id="home-rows" style="display:none"></div>
+        <div class="grid" id="grid"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add/Edit Modal - Multi Step -->
+<div class="modal-backdrop" id="modal">
+  <div class="modal">
+    <div class="modal-hdr">
+      <span class="modal-ttl" id="modal-title">הוספת מקום חדש</span>
+      <button class="modal-x" id="modal-close-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div id="form-error" class="err-msg" style="display:none"></div>
+      <!-- Progress -->
+      <div>
+        <div class="step-progress">
+          <div class="step-dot active" id="sdot-1">1</div>
+          <div class="step-line" id="sline-1"></div>
+          <div class="step-dot" id="sdot-2">2</div>
+          <div class="step-line" id="sline-2"></div>
+          <div class="step-dot" id="sdot-3">3</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:4px">
+          <span class="step-label">פרטי מקום</span>
+          <span class="step-label">תמונות</span>
+          <span class="step-label">מיקום ופרטים</span>
+        </div>
+      </div>
+
+      <!-- Step 1: Basic info -->
+      <div class="step-panel active" id="step-1">
+        <div class="field">
+          <label>שם המקום <span style="color:var(--closed)">*</span></label>
+          <input type="text" id="f-name" placeholder="לדוגמה: עין עבדת, נחל עורבים...">
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label>קטגוריה <span style="color:var(--closed)">*</span></label>
+            <select id="f-category"><option value="">בחר קטגוריה</option></select>
+          </div>
+          <div class="field">
+            <label>עלות</label>
+            <select id="f-is-paid">
+              <option value="0">חינם</option>
+              <option value="1">בתשלום</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>מיועד ל <span style="color:var(--closed)">*</span> <span style="color:var(--text2);font-weight:400;font-size:12px">(לפחות אחד)</span></label>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:2px" id="f-audience-wrap">
+            <label style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;cursor:pointer"><input type="checkbox" value="משפחות" onchange="updateAudience()"> משפחות</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;cursor:pointer"><input type="checkbox" value="צעירים" onchange="updateAudience()"> צעירים</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;cursor:pointer"><input type="checkbox" value="מיטיבי לכת" onchange="updateAudience()"> מיטיבי לכת</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;cursor:pointer"><input type="checkbox" value="עגלות וכיסאות גלגלים" onchange="updateAudience()"> עגלות / כיסאות גלגלים</label>
+          </div>
+          <input type="hidden" id="f-audience">
+        </div>
+        <div class="field">
+          <label>תיאור <span>(אופציונלי)</span></label>
+          <div class="rich-toolbar">
+            <button type="button" onclick="richCmd('bold')" title="מודגש"><b>B</b></button>
+            <button type="button" onclick="richCmd('underline')" title="קו תחתי"><u>U</u></button>
+            <button type="button" onclick="richCmd('italic')" title="נטוי"><i>I</i></button>
+            <button type="button" onclick="richInsertBullet()" title="נקודות">• רשימה</button>
+            <button type="button" onclick="richInsertNewline()" title="שורה חדשה">↵ שורה</button>
+          </div>
+          <div id="f-desc" class="rich-desc" contenteditable="true" dir="rtl" data-placeholder="ספרו על המקום, מה מיוחד בו, טיפים למבקרים..." oninput="syncDesc()"></div>
+          <input type="hidden" id="f-desc-hidden">
+        </div>
+        <div class="toggle-row">
+          <span class="toggle-lbl">המקום פתוח לקהל</span>
+          <label class="toggle">
+            <input type="checkbox" id="f-open" checked>
+            <span class="toggle-tr"></span>
+            <span class="toggle-th"></span>
+          </label>
+        </div>
+        <div class="toggle-row">
+          <span class="toggle-lbl" style="display:flex;align-items:center;gap:6px">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20c0-3.31 2.69-6 6-6s6 2.69 6 6"/></svg>
+            בדרך כלל צנוע
+          </span>
+          <label class="toggle">
+            <input type="checkbox" id="f-modest">
+            <span class="toggle-tr"></span>
+            <span class="toggle-th"></span>
+          </label>
+        </div>
+        <div class="step-nav"><button class="btn-next" onclick="goStep(2)">הבא → תמונות</button></div>
+      </div>
+
+      <!-- Step 2: Images -->
+      <div class="step-panel" id="step-2">
+        <div class="field">
+          <label>תמונות <span>(אופציונלי — ניתן לבחור מספר)</span></label>
+          <div class="img-drop" id="img-drop">
+            <input type="file" id="f-image" accept="image/*" multiple onchange="onImagesSelected()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <p>לחצו כאן לבחירת תמונות<small>PNG, JPG, WEBP עד 5MB לתמונה</small></p>
+          </div>
+          <div id="imgs-preview" class="imgs-preview"></div>
+          <input type="url" id="f-image-url" placeholder="או הדביקו קישור לתמונה (https://...)" style="margin-top:8px">
+        </div>
+        <div class="step-nav">
+          <button class="btn-prev" onclick="goStep(1)">← חזרה</button>
+          <button class="btn-next" onclick="goStep(3)">הבא → מיקום</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Location + details -->
+      <div class="step-panel" id="step-3">
+        <div class="field">
+          <label>מיקום על המפה <span style="color:var(--closed)">*</span></label>
+          <div class="map-row">
+            <input type="text" id="map-search-input" placeholder="חפש מקום... (לדוגמה: מכתש רמון)">
+            <button class="btn-geo" onclick="geocodeSearch()">חפש</button>
+            <button class="btn-geo" onclick="useMyLoc()" title="מיקום נוכחי">📍</button>
+          </div>
+          <div class="map-picker" id="map-picker"><span class="map-hint">לחצו על המפה לסימון המיקום</span></div>
+          <div class="coords-row" id="coords-row">
+            <input type="number" id="f-lat" step="any" placeholder="קו רוחב">
+            <input type="number" id="f-lng" step="any" placeholder="קו אורך">
+          </div>
+          <div id="region-tag-display"></div>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label>כתובת / אזור <span>(אופציונלי)</span></label>
+            <input type="text" id="f-address" placeholder="מדבר הנגב, גליל...">
+          </div>
+          <div class="field">
+            <label>שעות פתיחה <span>(אופציונלי)</span></label>
+            <input type="text" id="f-hours" placeholder="א'-ה' 08:00-17:00">
+          </div>
+        </div>
+        <div class="field">
+          <label>קישור לאתר / גוגל מפות <span>(אופציונלי)</span></label>
+          <input type="url" id="f-link" placeholder="https://">
+        </div>
+        <div class="step-nav">
+          <button class="btn-prev" onclick="goStep(2)">← חזרה</button>
+          <button class="btn-submit" id="submit-btn" onclick="submitLocation()">💾 שמור מקום</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="detail-page">
+  <div class="dp-topbar">
+    <div class="dp-topbar-inner">
+      <button class="dp-back" onclick="closeDetailPage()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        חזרה
+      </button>
+      <span class="dp-topbar-title" id="dp-topbar-title"></span>
+      <button class="dp-share" onclick="shareDetailLink()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="10.6" x2="15.4" y2="6.4"/><line x1="8.6" y1="13.4" x2="15.4" y2="17.6"/></svg>
+        שיתוף
+      </button>
+    </div>
+  </div>
+  <div class="dp-wrap">
+    <div class="dp-layout" id="dp-layout-mount"></div>
+  </div>
+</div>
+
+<!-- Global footer -->
+<footer style="text-align:center;padding:12px 20px;border-top:1px solid var(--border);background:var(--bg2)">
+  <button onclick="document.getElementById('access-modal').classList.add('open')"
+          style="background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--text2);font-family:'Assistant',sans-serif;padding:5px 10px;border-radius:8px;transition:.2s"
+          onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text2)'">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+    הצהרת נגישות
+  </button>
+</footer>
+
+<!-- Admin Modal -->
+<div class="modal-backdrop" id="admin-modal">
+  <div class="modal">
+    <div class="modal-hdr">
+      <div class="admin-hero">
+        <div class="admin-hero-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="admin-hero-txt">
+          <div class="admin-hero-ttl">פאנל ניהול</div>
+          <div class="admin-hero-sub">משתמשים, תוכן והרשאות</div>
+        </div>
+      </div>
+      <button class="modal-x" onclick="closeModal('admin-modal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body" id="admin-body">טוען...</div>
+  </div>
+</div>
+
+<!-- Profile Modal -->
+<div class="modal-backdrop" id="profile-modal">
+  <div class="modal">
+    <div class="modal-hdr">
+      <span class="modal-ttl" id="profile-modal-title">פרופיל משתמש</span>
+      <button class="modal-x" onclick="closeModal('profile-modal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div id="profile-content"></div>
+  </div>
+</div>
+
+<!-- Ad Banner -->
+<div id="ad-backdrop">
+  <div class="ad-modal">
+    <a id="ad-link" href="#" target="_blank" rel="noopener">
+      <img id="ad-img" src="" alt="פרסומת">
+    </a>
+    <div class="ad-countdown" id="ad-countdown">3</div>
+    <button class="ad-close-btn" id="ad-close-btn" onclick="closeAd()">×</button>
+  </div>
+</div>
+
+<!-- Accessibility Modal -->
+<div class="modal-backdrop" id="access-modal">
+  <div class="modal" style="max-width:580px">
+    <div class="modal-hdr">
+      <span class="modal-ttl" style="display:flex;align-items:center;gap:8px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        הצהרת נגישות
+      </span>
+      <button class="modal-x" onclick="closeModal('access-modal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body" style="gap:14px;font-size:14px;line-height:1.75;color:var(--text)">
+      <p style="font-size:16px;font-weight:800">הצהרת נגישות — אתר דרך הארץ</p>
+      <p>אתר <strong>דרך הארץ</strong> שואף להיות נגיש לכלל המשתמשים, לרבות אנשים עם מוגבלויות, בהתאם לתקן הנגישות הישראלי <strong>ת"י 5568</strong> ולהנחיות ה-WCAG 2.1 ברמה AA.</p>
+
+      <p style="font-weight:800;margin-top:4px">מה כבר נגיש באתר:</p>
+      <ul style="padding-right:20px;display:flex;flex-direction:column;gap:6px">
+        <li>ניווט מלא במקלדת בכל ממשק האתר</li>
+        <li>תמיכה בקוראי מסך (NVDA, VoiceOver) באמצעות תגיות ARIA</li>
+        <li>ניגודיות צבעים מספקת בין טקסט לרקע</li>
+        <li>טקסטים חלופיים (alt) לתמונות</li>
+        <li>תמיכה בהגדלת טקסט עד 200% ללא אובדן תוכן</li>
+        <li>עיצוב רספונסיבי לשימוש במובייל ובטאבלט</li>
+        <li>הודעות שגיאה מובנות וברורות בטפסים</li>
+        <li>כותרות מסודרות בהיררכיה תקנית (H1–H3)</li>
+      </ul>
+
+      <p style="font-weight:800;margin-top:4px">ידוע לנו ואנו עובדים על שיפור:</p>
+      <ul style="padding-right:20px;display:flex;flex-direction:column;gap:6px">
+        <li>חלק ממפות Leaflet אינן נגישות במלואן לקוראי מסך</li>
+        <li>חלק מהתוכן שמשתמשים מעלים (תמונות וטקסטים) עשוי להיות חסר תיאורים</li>
+      </ul>
+
+      <p style="font-weight:800;margin-top:4px">פניות בנושא נגישות:</p>
+      <p>נתקלתם בבעיית נגישות? נשמח לשמוע. ניתן לפנות אלינו בדוא"ל:
+        <a href="/cdn-cgi/l/email-protection#7c1814131f454b454c453c1b111d1510521f1311" style="color:var(--accent);font-weight:700"><span class="__cf_email__" data-cfemail="85e1edeae6bcb2bcb5bcc5e2e8e4ece9abe6eae8">[email&#160;protected]</span></a>
+      </p>
+      <p>אנו מתחייבים לטפל בפניות נגישות תוך <strong>5 ימי עסקים</strong>.</p>
+
+      <p style="font-size:12px;color:var(--text2);border-top:1px solid var(--border);padding-top:10px;margin-top:4px">
+        הצהרה זו עודכנה לאחרונה: ינואר 2025 · האתר נבנה עם שילוב של HTML סמנטי, CSS מותאם ו-JavaScript נגיש
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Guest Nudge Modal -->
+<div class="guest-nudge-backdrop" id="guest-nudge">
+  <div class="guest-nudge-card">
+    <div class="guest-nudge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+    <h3 id="guest-nudge-title">פעולה זו דורשת הרשמה</h3>
+    <p id="guest-nudge-msg">הצטרפו לדרך הארץ כדי לשתף מקומות, לסמן לייקים, ולכתוב חוויות</p>
+    <div class="guest-nudge-actions">
+      <button class="btn-reg" onclick="goRegister()">הצטרפו עכשיו — זה חינם!</button>
+      <button class="btn-skip" onclick="closeGuestNudge()">אולי בפעם אחרת</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const API = 'https://sound.pythonanywhere.com';
+const CLOUDINARY_CLOUD_NAME = 'rpbok3l7';
+const CLOUDINARY_UPLOAD_PRESET = 'metailim';
+const GOOGLE_CLIENT_ID = '426523025549-7c50rkn7cun4vmm2r802u0ij6egjehtg.apps.googleusercontent.com';
+let ADMIN_EMAILS = ['dh058328@gmail.com'];
+
+async function uploadToCloudinary(file){
+  const fd=new FormData();
+  fd.append('file',file);
+  fd.append('upload_preset',CLOUDINARY_UPLOAD_PRESET);
+  const res=await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,{method:'POST',body:fd});
+  const data=await res.json();
+  if(!res.ok) throw new Error((data.error&&data.error.message)||'שגיאה בהעלאת תמונה');
+  return data.secure_url;
+}
+
+const CATS = [
+  {id:'מסלולי הליכה', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4a1 1 0 1 0 2 0 1 1 0 0 0-2 0"/><path d="m10.5 8.5 2 1.5L14 14l2.5 4"/><path d="m9.5 14 1-4 2.5 1"/><path d="m7 20 2.5-6"/></svg>'},
+  {id:'מעיינות ורטובים', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6"/><path d="M5.6 8.6A6 6 0 1 0 18.4 8.6"/><path d="M6 18a6 6 0 0 0 12 0"/></svg>'},
+  {id:'אקשן ואקסטרים', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>'},
+  {id:'נוף ותצפיות', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 17 4-8 4 4 4-7 4 11"/><path d="M3 21h18"/></svg>'},
+  {id:'חופים ומים', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-4 7-4 7 4 7 4-3 4-7 4-7-4-7-4Z"/><path d="M15 12s3-4 7-4"/><path d="M15 12s3 4 7 4"/></svg>'},
+  {id:'הרים וטבע', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3 4 20h16L12 3z"/><path d="m12 3-4 9"/><path d="M12 3l4 9"/></svg>'},
+  {id:'ערים ותרבות', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="9" width="13" height="12"/><path d="M8 9V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4"/><rect x="16" y="13" width="5" height="8"/><path d="M3 21h18"/></svg>'},
+  {id:'אוכל ושתייה', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>'},
+  {id:'אחר', icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>'},
+];
+const REGIONS = ['צפון','מרכז','דרום'];
+
+let state = {
+  user:null, token:null, locations:[],
+  activeCat:'', activeRegion:'', searchQuery:'',
+  advRegion:'', advCat:'', advPaid:'',
+  pickerMap:null, pickerMarker:null, cardMaps:{},
+  userLat:null, userLng:null,
+  editingId:null, lastCount:0, existingImageUrls:[],
+  cardSlideIntervals:{}, locationsLoaded:false,
+};
+let isFirstContrib=false, searchTimer=null, pollTimer=null, currentStep=1;
+let _guestNudgeCb=null;
+
+// ── Theme (dark / light manual toggle) ──
+const THEME_KEY='mtyalim_theme';
+function applyTheme(mode){
+  // mode: 'light' | 'dark' | 'auto'
+  if(mode==='auto'){
+    document.documentElement.removeAttribute('data-theme');
+  }else{
+    document.documentElement.setAttribute('data-theme',mode);
+  }
+  const sunIcon=document.getElementById('theme-icon-sun');
+  const moonIcon=document.getElementById('theme-icon-moon');
+  const prefersDark=window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isDark = mode==='dark' || (mode==='auto' && prefersDark);
+  if(sunIcon)sunIcon.style.display=isDark?'block':'none';
+  if(moonIcon)moonIcon.style.display=isDark?'none':'block';
+}
+function toggleTheme(){
+  const current=localStorage.getItem(THEME_KEY)||'auto';
+  const prefersDark=window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const currentlyDark = current==='dark' || (current==='auto' && prefersDark);
+  const next = currentlyDark ? 'light' : 'dark';
+  localStorage.setItem(THEME_KEY,next);
+  applyTheme(next);
+}
+(function initTheme(){
+  const saved=localStorage.getItem(THEME_KEY)||'auto';
+  applyTheme(saved);
+})();
+
+// ── Ad system ──
+let adData={img:'',link:'',enabled:false};
+let adTimer=null;
+function loadAdSettings(){
+  try{const s=localStorage.getItem('mtyalim_ad');if(s)adData=JSON.parse(s);}catch(e){}
+}
+function saveAdSettings(){localStorage.setItem('mtyalim_ad',JSON.stringify(adData));}
+function showAd(){
+  if(!adData.enabled||!adData.img)return;
+  const bd=document.getElementById('ad-backdrop');
+  document.getElementById('ad-img').src=adData.img;
+  const lnk=document.getElementById('ad-link');
+  if(adData.link){lnk.href=adData.link;lnk.target='_blank';}else{lnk.href='#';lnk.removeAttribute('target');}
+  const closebtn=document.getElementById('ad-close-btn');
+  const countdown=document.getElementById('ad-countdown');
+  closebtn.classList.remove('visible');
+  countdown.style.display='block';
+  let secs=3;
+  countdown.textContent=secs;
+  bd.classList.add('open');
+  const iv=setInterval(()=>{
+    secs--;
+    if(secs<=0){clearInterval(iv);countdown.style.display='none';closebtn.classList.add('visible');}
+    else countdown.textContent=secs;
+  },1000);
+}
+function closeAd(){document.getElementById('ad-backdrop').classList.remove('open');}
+function scheduleAd(){
+  if(adTimer)clearInterval(adTimer);
+  adTimer=setInterval(()=>showAd(),3600000);
+}
+document.getElementById('ad-backdrop').addEventListener('click',e=>{if(e.target===document.getElementById('ad-backdrop')){}});
+
+// ── Rank ──
+function getRank(posts){
+  if(posts>=500)return{label:'הרפתקן',cls:'rank-adventurer'};
+  if(posts>=200)return{label:'נווד',cls:'rank-nomad'};
+  if(posts>=100)return{label:'תרמילאי',cls:'rank-backpacker'};
+  if(posts>=30)return{label:'מטייל',cls:'rank-traveler'};
+  if(posts>1)return{label:'תייר',cls:'rank-tourist'};
+  return null;
+}
+
+// ── Security helpers ──
+function secureAdminCheck(){
+  // Double-check on every admin action - don't rely solely on client email list
+  if(!state.user||!state.token)return false;
+  return isAdminUser(state.user.email);
+}
+
+// ── renderDesc: converts stored plain text (with \n) to safe HTML ──
+function renderDesc(text){
+  if(!text)return '';
+  return text
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/__(.+?)__/g,'<u>$1</u>')
+    .replace(/\n/g,'<br>');
+}
+
+// ── Avatar helper: colored initial circle when no picture is set ──
+const AVATAR_COLORS=['#ef4444','#f97316','#f59e0b','#84cc16','#10b981','#14b8a6','#06b6d4','#3b82f6','#6366f1','#8b5cf6','#a855f7','#ec4899'];
+function avatarColorFor(str){
+  const s=(str||'?');
+  let hash=0;
+  for(let i=0;i<s.length;i++){hash=s.charCodeAt(i)+((hash<<5)-hash);}
+  return AVATAR_COLORS[Math.abs(hash)%AVATAR_COLORS.length];
+}
+function avatarInitial(name){
+  const s=(name||'').trim();
+  if(!s)return '?';
+  // Array.from splits by Unicode code point (not UTF-16 code unit), so this correctly
+  // grabs one full character for Hebrew, emoji, or any other script — not just Latin.
+  const first=Array.from(s)[0];
+  // toUpperCase() is a no-op on Hebrew (no case distinction) and safe on any script.
+  return first.toUpperCase();
+}
+// Returns an <img> if a real picture URL is provided, otherwise a colored initial-circle <div>.
+// `cls` should include the same sizing class used across the site (e.g. 'a-pic','user-pic','profile-pic-lg', etc.)
+// `extraStyle` lets callers add one-off inline sizing when no dedicated class exists.
+// `colorKey` (optional) — a stable unique value (user id / email) to base the background color on.
+// Pass this whenever one's available so two different users who happen to share a name still get
+// different colors; falls back to hashing the name itself when no key is given.
+function avatarHTML(picture,name,cls,extraStyle,colorKey){
+  const pic=(picture||'').trim();
+  const key=colorKey!=null&&colorKey!==''?String(colorKey):(name||'?');
+  if(pic){
+    return `<img class="${cls}" src="${escHtml(pic)}" alt="" onerror="this.outerHTML=avatarHTML('',${JSON.stringify(name||'')},'${cls}','${extraStyle||''}',${JSON.stringify(key)})" style="${extraStyle||''}">`;
+  }
+  const bg=avatarColorFor(key);
+  const initial=avatarInitial(name);
+  return `<div class="${cls}" style="${extraStyle||''}background:${bg};color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;user-select:none">${escHtml(initial)}</div>`;
+}
+
+// ── Sidebar view ──
+let currentView='home';
+function moveSbIndicator(btn){
+  const ind=document.getElementById('sb-indicator');
+  if(!ind||!btn)return;
+  ind.style.top=(btn.offsetTop+btn.offsetHeight/2-9)+'px';
+  ind.style.opacity='1';
+}
+function setSidebarView(view){
+  currentView=view;
+  document.querySelectorAll('.sb-btn').forEach(b=>b.classList.remove('active'));
+  const btn=document.getElementById('sb-'+view);
+  if(btn){btn.classList.add('active');moveSbIndicator(btn);}
+  const titles={home:'מקומות מומלצים',near:'קרוב אליי',popular:'הפופולריים',new:'הכי חדשים'};
+  const titleEl=document.getElementById('toolbar-title');
+  if(titleEl)titleEl.textContent=titles[view]||'מקומות';
+  // Apply sort
+  const sortEl=document.getElementById('sort-select');
+  if(sortEl){
+    if(view==='popular')sortEl.value='liked';
+    else if(view==='near')sortEl.value='nearest';
+    else if(view==='new')sortEl.value='newest';
+    else sortEl.value='newest';
+  }
+  renderMain();
+}
+
+// ── Smart search suggestions ──
+let suggestTimer=null;
+function onSearchInput(){
+  const val=document.getElementById('header-search').value;
+  const wrap=document.getElementById('hdr-search-wrap');
+  if(wrap)wrap.classList.toggle('has-value',val.length>0);
+  clearTimeout(searchTimer);
+  clearTimeout(suggestTimer);
+  suggestTimer=setTimeout(()=>{
+    buildSuggestions(val.trim());
+  },120);
+  searchTimer=setTimeout(()=>{
+    state.searchQuery=val.trim();
+    loadLocations();
+  },380);
+}
+function clearSearch(){
+  const inp=document.getElementById('header-search');
+  if(inp)inp.value='';
+  const wrap=document.getElementById('hdr-search-wrap');
+  if(wrap)wrap.classList.remove('has-value');
+  hideSuggestions();
+  state.searchQuery='';
+  loadLocations();
+}
+// Single button: acts as a mic (start voice search) when the input is empty,
+// or as a clear button (× ) once there's text — same pattern as most modern search bars.
+function searchActionClick(){
+  const wrap=document.getElementById('hdr-search-wrap');
+  if(wrap&&wrap.classList.contains('has-value')){
+    clearSearch();
+  }else{
+    startVoiceSearch();
+  }
+}
+
+// ── Voice search ──
+let _recognition=null, _listening=false;
+function startVoiceSearch(){
+  const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+  const btn=document.getElementById('search-action-btn');
+  if(!SpeechRecognition){
+    showToast('חיפוש קולי אינו נתמך בדפדפן הזה');
+    return;
+  }
+  if(_listening){_recognition&&_recognition.stop();return;}
+  _recognition=new SpeechRecognition();
+  _recognition.lang='he-IL';
+  _recognition.interimResults=false;
+  _recognition.maxAlternatives=1;
+  _recognition.onstart=()=>{_listening=true;btn&&btn.classList.add('listening');};
+  _recognition.onend=()=>{_listening=false;btn&&btn.classList.remove('listening');};
+  _recognition.onerror=()=>{_listening=false;btn&&btn.classList.remove('listening');showToast('לא הצלחנו לזהות דיבור, נסו שוב');};
+  _recognition.onresult=(e)=>{
+    const text=(e.results[0][0].transcript||'').trim();
+    if(!text)return;
+    const inp=document.getElementById('header-search');
+    if(inp)inp.value=text;
+    const wrap=document.getElementById('hdr-search-wrap');
+    if(wrap)wrap.classList.add('has-value');
+    hideSuggestions();
+    state.searchQuery=text;
+    loadLocations();
+  };
+  try{_recognition.start();}catch(e){}
+}
+function buildSuggestions(query){
+  const box=document.getElementById('search-suggest');
+  if(!box)return;
+  if(!query||query.length<1){hideSuggestions();return;}
+  const q=query.toLowerCase();
+  // Match locations by name/address
+  const locMatches=state.locations.filter(l=>
+    l.name.toLowerCase().includes(q)||(l.address||'').toLowerCase().includes(q)
+  ).slice(0,5);
+  // Match categories
+  const catMatches=CATS.filter(c=>c.id.includes(q)).slice(0,3);
+  // Match regions
+  const regionMatches=REGIONS.filter(r=>r.includes(q));
+
+  if(!locMatches.length&&!catMatches.length&&!regionMatches.length){
+    box.innerHTML=`<div class="suggest-empty">לא נמצאו תוצאות</div>`;
+    box.classList.add('open'); return;
+  }
+  let html='';
+  regionMatches.forEach(r=>{
+    html+=`<div class="suggest-item" onclick="selectSuggestRegion('${r}')">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+      <span>${r}</span><span class="suggest-cat">אזור</span></div>`;
+  });
+  catMatches.forEach(c=>{
+    html+=`<div class="suggest-item" onclick="selectSuggestCat('${c.id}')">
+      ${c.icon.replace('viewBox','width="14" height="14" viewBox')}
+      <span>${c.id}</span><span class="suggest-cat">קטגוריה</span></div>`;
+  });
+  locMatches.forEach(l=>{
+    const img=getImgs(l)[0]||'';
+    html+=`<div class="suggest-item" onclick="selectSuggestLoc(${l.id})">
+      ${img?`<img src="${imgSrc(img)}" style="width:32px;height:32px;object-fit:cover;border-radius:6px;flex-shrink:0">`:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>'}
+      <span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escHtml(l.name)}</span>
+      <span class="suggest-cat">${escHtml(l.region||l.category||'')}</span></div>`;
+  });
+  box.innerHTML=html;
+  box.classList.add('open');
+}
+function hideSuggestions(){const b=document.getElementById('search-suggest');if(b)b.classList.remove('open');}
+function showSuggestions(){const v=document.getElementById('header-search')?.value||'';if(v)buildSuggestions(v);}
+function selectSuggestLoc(id){hideSuggestions();openDetail(id);}
+function selectSuggestCat(cat){
+  hideSuggestions();
+  const inp=document.getElementById('header-search');if(inp)inp.value=cat;
+  document.getElementById('hdr-search-wrap')?.classList.add('has-value');
+  state.searchQuery=cat;loadLocations();
+}
+function selectSuggestRegion(r){
+  hideSuggestions();
+  const inp=document.getElementById('header-search');if(inp)inp.value=r;
+  document.getElementById('hdr-search-wrap')?.classList.add('has-value');
+  state.searchQuery=r;loadLocations();
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.h-search-wrap'))hideSuggestions();
+});
+
+document.addEventListener('DOMContentLoaded',()=>{
+  buildCatNav();
+  buildCatSelect();
+  buildAdvCatSelect();
+  loadAdSettings();
+  // load extra admins from localStorage
+  try{const a=localStorage.getItem('mtyalim_admins');if(a)JSON.parse(a).forEach(e=>{if(!ADMIN_EMAILS.includes(e))ADMIN_EMAILS.push(e);});}catch(e){}
+  // בדיקה אם הגענו הנה מקישור אימות מייל
+  const verifyParam=new URLSearchParams(location.search).get('verify');
+  if(verifyParam==='success'){
+    showToast('✅ כתובת האימייל אומתה בהצלחה! אפשר להתחבר עכשיו');
+  }else if(verifyParam==='fail'){
+    showToast('❌ קישור האימות לא תקין או שפג תוקפו');
+  }
+  if(verifyParam){
+    const url=new URL(location.href);
+    url.searchParams.delete('verify');
+    history.replaceState({},'',url.toString());
+  }
+  const t=localStorage.getItem('mtyalim_token');
+  if(t){state.token=t;verifyStoredToken(t);}
+});
+
+function initGoogle(){
+  try{
+    google.accounts.id.initialize({client_id:GOOGLE_CLIENT_ID,callback:handleGoogleCred});
+    google.accounts.id.renderButton(document.getElementById('google-btn'),{theme:'outline',size:'large',locale:'he',shape:'rectangular',width:280});
+  }catch(e){googleBlocked();}
+}
+function googleBlocked(){
+  const el=document.getElementById('google-btn');
+  if(el) el.innerHTML='<div style="font-size:13px;color:var(--text2);padding:6px 0;text-align:center">כניסה עם גוגל חסומה (חוסם פרסומות).<br>השתמש באימייל וסיסמה.</div>';
+  const orEl=document.querySelector('.auth-or');
+  if(orEl) orEl.style.display='none';
+}
+
+function switchTab(tab,btn){
+  document.querySelectorAll('.auth-tabs button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('auth-login').style.display=tab==='login'?'flex':'none';
+  document.getElementById('auth-register').style.display=tab==='register'?'flex':'none';
+}
+
+let _lastAttemptedEmail='';
+
+async function loginEmail(){
+  const email=document.getElementById('login-email').value.trim();
+  const pass=document.getElementById('login-pass').value;
+  if(!email||!pass){return showToast('נא למלא אימייל וסיסמה');}
+  const emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(!emailRe.test(email)){return showToast('❌ כתובת האימייל לא תקינה');}
+  _lastAttemptedEmail=email;
+  document.getElementById('resend-verify-btn').style.display='none';
+  try{
+    const res=await apiFetch('/api/login','POST',{email,password:pass});
+    handleAuthSuccess(res);
+  }catch(e){
+    showToast('❌ '+e.message);
+    if(e.needsVerification){
+      document.getElementById('resend-verify-btn').style.display='block';
+    }
+  }
+}
+
+async function registerEmail(){
+  const name=document.getElementById('reg-name').value.trim();
+  const email=document.getElementById('reg-email').value.trim();
+  const pass=document.getElementById('reg-pass').value;
+  if(!name||!email||!pass){return showToast('נא למלא את כל השדות');}
+  // Email format validation
+  const emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(!emailRe.test(email)){return showToast('❌ כתובת האימייל לא תקינה');}
+  if(pass.length<6){return showToast('הסיסמה חייבת להכיל לפחות 6 תווים');}
+  const fd=new FormData();
+  fd.append('username',name);fd.append('email',email);fd.append('password',pass);
+  try{
+    const res=await fetch(API+'/api/register',{method:'POST',body:fd});
+    const data=await res.json();
+    if(!res.ok)throw new Error(data.error||'שגיאה');
+    if(data.needs_verification){
+      // לא מתחברים אוטומטית - צריך קודם לאמת את המייל
+      const tabs=document.querySelectorAll('.auth-tabs button');
+      tabs.forEach(b=>b.classList.remove('active'));
+      if(tabs[0])tabs[0].classList.add('active');
+      document.getElementById('auth-login').style.display='flex';
+      document.getElementById('auth-register').style.display='none';
+      document.getElementById('login-email').value=email;
+      const msgEl=document.getElementById('auth-verify-msg');
+      msgEl.textContent='📧 '+(data.message||'נשלח אליך מייל לאימות כתובת האימייל. יש ללחוץ על הקישור במייל כדי להתחבר.');
+      msgEl.style.display='block';
+      showToast('✅ נשלח מייל אימות - בדוק/י את תיבת הדואר');
+    }else{
+      handleAuthSuccess(data);
+    }
+  }catch(e){showToast('❌ '+e.message);}
+}
+
+async function resendVerification(){
+  if(!_lastAttemptedEmail)return;
+  try{
+    const res=await fetch(API+'/api/resend-verification',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:_lastAttemptedEmail})});
+    const data=await res.json();
+    showToast('📧 '+(data.message||'אם קיים חשבון לא מאומת עם אימייל זה, נשלח אליו מייל אימות.'));
+    document.getElementById('resend-verify-btn').style.display='none';
+  }catch(e){showToast('❌ שגיאה בשליחת המייל');}
+}
+
+async function handleGoogleCred(resp){
+  state.token=resp.credential;
+  try{
+    const res=await apiFetch('/api/auth','POST',{token:state.token});
+    handleAuthSuccess(res);
+  }catch(e){showToast('❌ שגיאה בהתחברות: '+e.message);}
+}
+
+function handleAuthSuccess(res){
+  state.user=res; state.token=res.token||state.token;
+  localStorage.setItem('mtyalim_token',state.token);
+  showUserArea();
+  showApp();loadLocations();
+}
+
+function enterAsGuest(){
+  state.user=null; state.token=null; state.isGuest=true;
+  document.getElementById('auth-wall').style.display='none';
+  showApp(); loadLocations();
+}
+
+function requireAuth(title, msg, cb){
+  if(state.token) return cb&&cb();
+  _guestNudgeCb=cb||null;
+  document.getElementById('guest-nudge-title').textContent=title||'פעולה זו דורשת הרשמה';
+  document.getElementById('guest-nudge-msg').textContent=msg||'הצטרפו לדרך הארץ כדי להמשיך';
+  document.getElementById('guest-nudge').classList.add('open');
+}
+
+function closeGuestNudge(){
+  document.getElementById('guest-nudge').classList.remove('open');
+  _guestNudgeCb=null;
+}
+
+function goRegister(){
+  closeGuestNudge();
+  document.getElementById('guest-nudge').classList.remove('open');
+  // Sign out guest and show auth wall
+  state.isGuest=false;
+  document.getElementById('app').style.display='none';
+  document.getElementById('cat-nav').style.display='none';
+  const strip=document.getElementById('stats-strip');if(strip)strip.style.display='none';
+  document.getElementById('auth-wall').style.display='flex';
+  // Switch to register tab
+  const tabs=document.querySelectorAll('.auth-tabs button');
+  tabs.forEach(b=>b.classList.remove('active'));
+  if(tabs[1])tabs[1].classList.add('active');
+  const login=document.getElementById('auth-login');
+  const reg=document.getElementById('auth-register');
+  if(login)login.style.display='none';
+  if(reg)reg.style.display='flex';
+}
+
+document.getElementById('guest-nudge').addEventListener('click',e=>{
+  if(e.target===document.getElementById('guest-nudge'))closeGuestNudge();
+});
+
+async function verifyStoredToken(t){
+  try{
+    const res=await apiFetch('/api/auth','POST',{token:t});
+    handleAuthSuccess(res);
+  }catch(e){
+    localStorage.removeItem('mtyalim_token');
+    document.documentElement.removeAttribute('data-boot');
+  }
+}
+
+function isAdminUser(email){return ADMIN_EMAILS.includes(email);}
+
+function showUserArea(){
+  const isAdmin=isAdminUser(state.user.email);
+  document.getElementById('user-area').innerHTML=`
+    ${avatarHTML(state.user.picture,state.user.name,'user-pic','width:32px;height:32px;border-radius:50%;font-size:13px;cursor:pointer',state.user.user_id).replace('<img ','<img onclick="openMyProfile()" ').replace('<div class="user-pic"','<div class="user-pic" onclick="openMyProfile()"')}
+    <span class="user-name" style="cursor:pointer" onclick="openMyProfile()">${escHtml(state.user.name)}</span>
+    ${isAdmin?`<div class="btn-admin-wrap"><button class="btn-admin" onclick="openAdmin()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> מנהל</button><span class="admin-notif-dot" id="admin-notif-dot"></span></div>`:''}
+    <button class="btn-out" onclick="signOut()">יציאה</button>`;
+}
+
+function signOut(){
+  google.accounts.id&&google.accounts.id.disableAutoSelect&&google.accounts.id.disableAutoSelect();
+  localStorage.removeItem('mtyalim_token');
+  state.user=null;state.token=null;
+  document.getElementById('user-area').innerHTML='';
+  document.getElementById('cat-nav').style.display='none';
+  document.getElementById('auth-wall').style.display='flex';
+  document.getElementById('contribute-wall').style.display='none';
+  document.getElementById('app').style.display='none';
+  clearInterval(pollTimer);
+}
+
+function showContributeWall(){
+  document.getElementById('auth-wall').style.display='none';
+  document.getElementById('contribute-wall').style.display='flex';
+  document.getElementById('app').style.display='none';
+  document.getElementById('cat-nav').style.display='none';
+}
+
+function skipContribute(){
+  state.user.has_contributed=true;
+  showApp();loadLocations();
+}
+
+function showApp(){
+  document.documentElement.removeAttribute('data-boot');
+  document.getElementById('auth-wall').style.display='none';
+  document.getElementById('contribute-wall').style.display='none';
+  document.getElementById('app').style.display='block';
+  document.getElementById('cat-nav').style.display='flex';
+  loadPublicStats();
+  const sb=document.getElementById('sidebar');
+  if(sb)sb.style.display='flex';
+  moveSbIndicator(document.getElementById('sb-'+currentView)||document.getElementById('sb-home'));
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(p=>{state.userLat=p.coords.latitude;state.userLng=p.coords.longitude;if(state.locationsLoaded)renderMain();},()=>{},{timeout:8000});
+  }
+  startPolling();
+  loadAnnouncement();
+  // Guest banner
+  const gb=document.getElementById('guest-banner');
+  if(gb)gb.style.display=state.isGuest?'flex':'none';
+  setTimeout(()=>showAd(),1500);
+  scheduleAd();
+}
+
+// ── Public Stats ──
+async function loadPublicStats(){
+  try{
+    const d=await apiFetch('/api/stats','GET');
+    const el=document.getElementById('header-stats');
+    const u=document.getElementById('stats-users');
+    const l=document.getElementById('stats-locs');
+    if(el)el.style.display='flex';
+    if(u)u.textContent=d.users.toLocaleString('he-IL');
+    if(l)l.textContent=d.locations.toLocaleString('he-IL');
+  }catch(e){}
+}
+
+// ── Category Nav ──
+function buildCatNav(){
+  const nav=document.getElementById('cat-nav');
+  nav.innerHTML=`<button class="cat-btn active" onclick="setCat(this,'')">${svgAll()} הכל</button>`+
+    REGIONS.map(r=>`<button class="region-btn" onclick="setRegion(this,'${r}')">${svgRegion(r)} ${r}</button>`).join('')+
+    CATS.map(c=>`<button class="cat-btn" onclick="setCat(this,'${escHtml(c.id)}')">${c.icon} ${escHtml(c.id)}</button>`).join('');
+}
+function svgAll(){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>';}
+function svgRegion(r){const m={'צפון':'<path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>','מרכז':'<circle cx="12" cy="12" r="10"/>','דרום':'<path d="m12 22-3.09-6.26L2 14.73l5-4.87L5.82 2.98 12 6.23l6.18-3.25L17 9.86l5 4.87-6.91 1.01L12 22z"/>'}; return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">${m[r]||''}</svg>`;}
+function buildCatSelect(){
+  const sel=document.getElementById('f-category');
+  if(!sel)return;
+  sel.innerHTML='<option value="">בחר קטגוריה</option>'+CATS.map(c=>`<option value="${escHtml(c.id)}">${escHtml(c.id)}</option>`).join('');
+}
+function buildAdvCatSelect(){
+  const sel=document.getElementById('adv-cat');
+  if(!sel)return;
+  sel.innerHTML='<option value="">כל הקטגוריות</option>'+CATS.map(c=>`<option value="${escHtml(c.id)}">${escHtml(c.id)}</option>`).join('');
+}
+function applyAdvFilter(){
+  state.advRegion=document.getElementById('adv-region').value;
+  state.advCat=document.getElementById('adv-cat').value;
+  state.advPaid=document.getElementById('adv-paid').value;
+  const dot=document.getElementById('filter-active-dot');
+  const cnt=document.getElementById('filter-count');
+  const hasFilter=state.advRegion||state.advCat||state.advPaid;
+  if(dot)dot.style.display=hasFilter?'inline-block':'none';
+  if(cnt)cnt.style.display='none';
+  renderMain();
+}
+function clearAdvFilter(){
+  document.getElementById('adv-region').value='';
+  document.getElementById('adv-cat').value='';
+  document.getElementById('adv-paid').value='';
+  state.advRegion='';state.advCat='';state.advPaid='';
+  const dot=document.getElementById('filter-active-dot');
+  if(dot)dot.style.display='none';
+  renderMain();
+}
+function toggleFilterPanel(){
+  const panel=document.getElementById('filter-panel');
+  const isOpen=panel.style.display==='flex';
+  panel.style.display=isOpen?'none':'flex';
+}
+document.addEventListener('click',function(e){
+  const panel=document.getElementById('filter-panel');
+  const btn=document.getElementById('filter-toggle-btn');
+  if(panel&&btn&&!panel.contains(e.target)&&!btn.contains(e.target)){
+    panel.style.display='none';
+  }
+});
+function setCat(btn,cat){
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  state.activeCat=cat; loadLocations();
+}
+function setRegion(btn,r){
+  const same=state.activeRegion===r;
+  document.querySelectorAll('.region-btn').forEach(b=>b.classList.remove('active'));
+  state.activeRegion=same?'':r;
+  if(!same)btn.classList.add('active');
+  loadLocations();
+}
+
+// ── Load ──
+async function loadLocations(){
+  const homeRows=document.getElementById('home-rows');
+  if(homeRows){homeRows.style.display='none';}
+  const gridEl=document.getElementById('grid');
+  gridEl.style.display='';
+  gridEl.innerHTML='<div class="loading"><div class="loading-spinner"></div><div class="loading-text">טוען מקומות...</div><div class="loading-sub">רגע אחד, אנחנו מביאים לכם את הטוב ביותר</div></div>';
+  try{
+    let url='/api/locations?';
+    if(state.activeCat)url+=`category=${encodeURIComponent(state.activeCat)}&`;
+    if(state.searchQuery)url+=`search=${encodeURIComponent(state.searchQuery)}&`;
+    if(state.activeRegion)url+=`region=${encodeURIComponent(state.activeRegion)}&`;
+    state.locations=await apiFetch(url,'GET');
+    state.locationsLoaded=true;
+    renderMain();
+  }catch(e){
+    gridEl.innerHTML=`<div class="empty"><h3>שגיאה בטעינה</h3><p>${e.message}</p></div>`;
+  }
+}
+
+function getSorted(){
+  const s=document.getElementById('sort-select')?.value||'newest';
+  let locs=[...state.locations];
+  // Advanced filters (client-side)
+  if(state.advRegion)locs=locs.filter(l=>l.region===state.advRegion);
+  if(state.advCat)locs=locs.filter(l=>l.category===state.advCat);
+  if(state.advPaid==='free')locs=locs.filter(l=>!l.is_paid);
+  if(state.advPaid==='paid')locs=locs.filter(l=>l.is_paid);
+  // Update count badge
+  const hasFilter=state.advRegion||state.advCat||state.advPaid;
+  const fc=document.getElementById('filter-count');
+  if(fc){fc.style.display=hasFilter?'':'none';fc.textContent=`${locs.length} תוצאות`;}
+  if(s==='liked')locs.sort((a,b)=>(b.like_count||0)-(a.like_count||0));
+  else if(s==='nearest'&&state.userLat!==null)locs.sort((a,b)=>dist(a)-dist(b));
+  return locs;
+}
+function dist(loc){
+  if(!loc.lat||!loc.lng||state.userLat==null||state.userLng==null)return Infinity;
+  const R=6371;
+  const dLat=(loc.lat-state.userLat)*Math.PI/180;
+  const dLng=(loc.lng-state.userLng)*Math.PI/180;
+  const a=Math.sin(dLat/2)**2+Math.cos(state.userLat*Math.PI/180)*Math.cos(loc.lat*Math.PI/180)*Math.sin(dLng/2)**2;
+  return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+}
+function distLabel(loc){
+  const km=dist(loc);
+  if(!isFinite(km))return '';
+  return km<1?`${Math.max(1,Math.round(km*1000))} מ'`:`${km<10?km.toFixed(1).replace('.0',''):Math.round(km)} ק"מ`;
+}
+function distBadgeHTML(loc){
+  const lbl=distLabel(loc);
+  if(!lbl)return '';
+  return `<span class="badge b-distance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>${lbl}</span>`;
+}
+
+function catIcon(cat){const c=CATS.find(x=>x.id===cat);return c?c.icon:'';}
+
+// ── Home highlights (a few picks per category) ──
+function isHomeUnfiltered(){
+  return currentView==='home' && !state.activeCat && !state.searchQuery && !state.advRegion && !state.advCat && !state.advPaid;
+}
+function renderMain(){
+  const homeRows=document.getElementById('home-rows');
+  const grid=document.getElementById('grid');
+  if(isHomeUnfiltered() && state.locations.length){
+    grid.style.display='none';
+    homeRows.style.display='';
+    renderHomeRows();
+  }else{
+    homeRows.style.display='none';
+    homeRows.innerHTML='';
+    grid.style.display='';
+    renderGrid();
+  }
+}
+function goCategoryFromHome(cat){
+  document.querySelectorAll('.cat-btn').forEach(b=>{
+    b.classList.toggle('active', b.getAttribute('onclick')===`setCat(this,'${cat}')`);
+  });
+  state.activeCat=cat;
+  window.scrollTo({top:0,behavior:'smooth'});
+  loadLocations();
+}
+function renderHomeRows(){
+  const wrap=document.getElementById('home-rows');
+  const rows=CATS.map(c=>{
+    const items=state.locations
+      .filter(l=>l.category===c.id)
+      .sort((a,b)=>(b.like_count||0)-(a.like_count||0))
+      .slice(0,6);
+    if(!items.length)return '';
+    return `<div class="home-row">
+      <div class="home-row-hdr">
+        <div class="home-row-ttl">
+          <div class="home-row-ic">${c.icon}</div>
+          <div>
+            <div class="home-row-name">${escHtml(c.id)}</div>
+            <div class="home-row-cnt">${items.length>1?`${items.length} מקומות נבחרים`:'מקום נבחר'}</div>
+          </div>
+        </div>
+        <button class="home-row-more" onclick="goCategoryFromHome('${escHtml(c.id)}')">
+          לכל הקטגוריה
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </button>
+      </div>
+      <div class="home-row-scroll">${items.map(loc=>cardHTML(loc)).join('')}</div>
+    </div>`;
+  }).filter(Boolean).join('');
+  wrap.innerHTML=rows;
+  // init maps/slideshows for any cards without images, same as renderGrid
+  const shown=CATS.flatMap(c=>state.locations.filter(l=>l.category===c.id).sort((a,b)=>(b.like_count||0)-(a.like_count||0)).slice(0,6));
+  shown.forEach(loc=>{if(loc.lat&&loc.lng&&!loc.image_url)initCardMap(loc);});
+  shown.forEach(loc=>{const imgs=getImgs(loc);if(imgs.length>1)initCardSlideshow(loc.id,imgs.length);});
+}
+
+function renderGrid(){
+  const grid=document.getElementById('grid');
+  // Clear any running slide intervals
+  Object.values(state.cardSlideIntervals).forEach(iv=>clearInterval(iv));
+  state.cardSlideIntervals={};
+  state.cardMaps={};
+  const locs=getSorted();
+  if(!locs.length){
+    grid.innerHTML=`<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg><h3>לא נמצאו מקומות</h3><p>נסו לשנות את הסינון</p></div>`;
+    return;
+  }
+  grid.innerHTML=locs.map(loc=>cardHTML(loc)).join('');
+  locs.forEach(loc=>{if(loc.lat&&loc.lng&&!loc.image_url)initCardMap(loc);});
+  // Init slideshow hover on cards with multiple images
+  locs.forEach(loc=>{
+    const imgs=getImgs(loc);
+    if(imgs.length>1)initCardSlideshow(loc.id,imgs.length);
+  });
+}
+
+function getImgs(loc){const raw=(loc.image_url||'').trim();if(!raw)return[];return raw.split(',').map(s=>s.trim()).filter(s=>s.length>0);}
+function imgSrc(u){return(u.startsWith('http')||u.startsWith('//'))? u : API+u;}
+
+function cardHTML(loc){
+  const imgs=getImgs(loc);
+  const status=loc.is_open?'<span class="badge b-open">פתוח</span>':'<span class="badge b-closed">סגור</span>';
+  const paid=loc.is_paid?'<span class="badge b-paid">💰 בתשלום</span>':'<span class="badge b-free">חינם</span>';
+  const region=loc.region?`<span class="badge b-region">${escHtml(loc.region)}</span>`:'';
+  let imgSection;
+  if(imgs.length){
+    const slides=imgs.map((u,i)=>`<div class="cis"><img src="${imgSrc(u)}" alt="${escHtml(loc.name)}" loading="lazy"></div>`).join('');
+    const dots=imgs.length>1?`<div class="card-slide-dots">${imgs.map((_,i)=>`<span class="csd${i===0?' act':''}"></span>`).join('')}</div>`:'';
+    imgSection=`<div class="card-imgs-wrap" id="cwrap-${loc.id}">
+      <div class="card-imgs-track" id="ctrack-${loc.id}">${slides}</div>
+      ${dots}
+      <div style="position:absolute;bottom:8px;left:8px;display:flex;gap:5px;align-items:center">
+        ${imgs.length>1?`<span class="card-img-count" style="position:static">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          ${imgs.length}</span>`:''}
+        ${loc.review_count>0?`<span class="card-img-count" style="position:static;background:rgba(16,185,129,.85)">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          ${loc.review_count}</span>`:''}
+      </div>
+    </div>`;
+  }else if(loc.lat&&loc.lng){
+    imgSection=`<div class="card-img-map" id="cmap-${loc.id}"></div>`;
+  }else{
+    imgSection=`<div class="card-img-placeholder"><svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg></div>`;
+  }
+  const likedCls=loc.liked_by_me?'liked':'';
+  const isOwner=state.user&&(state.user.user_id===loc.user_id||isAdminUser(state.user.email));
+  const ownerBtns=isOwner?`
+    <button class="btn-edit" onclick="event.stopPropagation();openEdit(${loc.id})" title="עריכה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+    <button class="btn-del" onclick="event.stopPropagation();deleteLocation(${loc.id})" title="מחיקה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M10 11v6M14 11v6"/></svg></button>`:'';
+  const cat=loc.category?`<span class="card-cat">${catIcon(loc.category)} ${escHtml(loc.category)}</span>`:'';
+  const desc=loc.description?`<div class="card-desc">${renderDesc(loc.description)}</div>`:'';
+  const addr=loc.address?`<div class="card-addr"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>${escHtml(loc.address)}</div>`:'';
+  const postCount=loc.user_loc_count||0;
+  const rank=getRank(postCount);
+  const rankHtml=rank?`<span class="rank-badge ${rank.cls}">${rank.label}</span>`:'';
+  return `<div class="card" id="card-${loc.id}" onclick="openDetail(${loc.id})">
+    ${imgSection}
+    <div class="card-body">
+      <div class="card-header"><span class="card-name">${escHtml(loc.name)}</span></div>
+      <div class="card-badges">${status}${paid}${region}${distBadgeHTML(loc)}</div>
+      ${(loc.is_modest||loc.is_shabbat)?`<div class="card-badges">
+        ${loc.is_modest?`<span class="badge b-modest" style="display:inline-flex;align-items:center;gap:4px"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="8" r="4"/><path d="M6 20c0-3.31 2.69-6 6-6s6 2.69 6 6"/></svg> בדרך כלל צנוע</span>`:''}
+        ${loc.is_shabbat?`<span class="badge b-shabbat" style="display:inline-flex;align-items:center;gap:4px">✡️ שומר שבת</span>`:''}
+      </div>`:''}
+      ${loc.audience?`<div class="audience-tags">${loc.audience.split(',').filter(Boolean).map(a=>`<span class="badge b-audience">${escHtml(a.trim())}</span>`).join('')}</div>`:''}
+      ${cat}${desc}${addr}
+      <div class="card-footer">
+        <div class="card-author" onclick="event.stopPropagation();openUserProfile(${loc.user_id})" style="cursor:pointer">
+          ${avatarHTML(loc.user_picture,loc.user_name,'a-pic','width:23px;height:23px;border-radius:50%;font-size:11px',loc.user_id)}
+          <div class="author-meta">
+            <span class="a-name">${escHtml(loc.user_name||'')} ${rankHtml}</span>
+            <span class="a-posts">${postCount} פוסטים</span>
+          </div>
+        </div>
+        <div class="card-acts">
+          <button class="btn-like ${likedCls}" id="like-${loc.id}" onclick="event.stopPropagation();toggleLike(${loc.id})">
+            <svg class="hrt" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span id="lc-${loc.id}">${loc.like_count||0}</span>
+          </button>
+          ${ownerBtns}
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function initCardSlideshow(locId, imgCount){
+  const card=document.getElementById(`card-${locId}`);
+  const track=document.getElementById(`ctrack-${locId}`);
+  if(!card||!track||imgCount<2)return;
+  let cur=0;
+  function goSlide(n){
+    cur=n%imgCount;
+    track.style.transform=`translateX(${cur*100}%)`;
+    const dots=card.querySelectorAll('.csd');
+    dots.forEach((d,i)=>d.classList.toggle('act',i===cur));
+  }
+  card.addEventListener('mouseenter',()=>{
+    if(state.cardSlideIntervals[locId])return;
+    state.cardSlideIntervals[locId]=setInterval(()=>goSlide(cur+1),1600);
+  });
+  card.addEventListener('mouseleave',()=>{
+    clearInterval(state.cardSlideIntervals[locId]);
+    delete state.cardSlideIntervals[locId];
+    goSlide(0);
+  });
+}
+
+function initCardMap(loc){
+  setTimeout(()=>{
+    const el=document.getElementById(`cmap-${loc.id}`);
+    if(!el||state.cardMaps[loc.id])return;
+    const m=L.map(el,{zoomControl:false,dragging:false,scrollWheelZoom:false,attributionControl:false,doubleClickZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(m);
+    m.setView([loc.lat,loc.lng],14);
+    L.circleMarker([loc.lat,loc.lng],{radius:8,fillColor:'#10b981',color:'#fff',weight:2,fillOpacity:1}).addTo(m);
+    state.cardMaps[loc.id]=m;
+  },60);
+}
+
+// ── Detail Page (standalone, hash-routed) ──
+function slugify(s){
+  return (s||'').toString().trim()
+    .replace(/["'?!.,:;()\[\]{}]/g,'')
+    .replace(/[\/\\#%]/g,'-')
+    .replace(/\s+/g,'-')
+    .replace(/-+/g,'-')
+    .replace(/^-+|-+$/g,'')
+    .slice(0,60);
+}
+function hashForLoc(loc){
+  const slug=slugify(loc.name)||'מקום';
+  return encodeURI(`${loc.id}-${slug}`);
+}
+function findLocById(id){
+  return state.locations.find(l=>l.id===id)||state.locations.find(l=>String(l.id)===String(id));
+}
+function parseIdFromHash(){
+  let h=location.hash||'';
+  try{h=decodeURIComponent(h);}catch(e){}
+  h=h.replace(/^#/,'');
+  const m=h.match(/^(\d+)/);
+  return m?parseInt(m[1],10):null;
+}
+// Auto-open a location if the page was loaded / locations refreshed with a matching hash
+function tryInitialRoute(){
+  if(state._routed)return;
+  const id=parseIdFromHash();
+  if(id==null)return;
+  const loc=findLocById(id);
+  if(loc){
+    state._routed=true;
+    showDetailPage(loc);
+    history.replaceState({view:'detail',id:loc.id},'',location.hash);
+  }
+}
+window.addEventListener('popstate',e=>{
+  const st=e.state;
+  if(st&&st.view==='detail'){
+    const loc=findLocById(st.id);
+    if(loc){showDetailPage(loc);return;}
+  }
+  const idFromHash=parseIdFromHash();
+  if(idFromHash!=null){
+    const loc=findLocById(idFromHash);
+    if(loc){showDetailPage(loc);return;}
+  }
+  hideDetailPage();
+});
+
+function openDetail(id){
+  const loc=findLocById(id);
+  if(!loc)return;
+  state._routed=true;
+  const h='#'+hashForLoc(loc);
+  if(location.hash!==h)history.pushState({view:'detail',id:loc.id},'',h);
+  showDetailPage(loc);
+}
+
+function showDetailPage(loc){
+  document.getElementById('app').style.display='none';
+  const cn=document.getElementById('cat-nav');if(cn)cn.style.display='none';
+  const sb=document.getElementById('sidebar');if(sb)sb.style.display='none';
+  document.getElementById('detail-page').style.display='block';
+  renderDetailPage(loc);
+  window.scrollTo(0,0);
+}
+
+function hideDetailPage(){
+  document.getElementById('detail-page').style.display='none';
+  document.getElementById('app').style.display='block';
+  const cn=document.getElementById('cat-nav');if(cn)cn.style.display='flex';
+  const sb=document.getElementById('sidebar');if(sb)sb.style.display='flex';
+  document.title='דרך הארץ';
+}
+
+function closeDetailPage(){
+  hideDetailPage();
+  if(location.hash)history.pushState({view:'grid'},'',location.pathname+location.search);
+  window.scrollTo(0,0);
+}
+
+function dpGalleryNav(id,dir){
+  const frame=document.getElementById('dpg-'+id);
+  if(!frame)return;
+  const imgs=frame.querySelectorAll('img');
+  const count=imgs.length;
+  if(count<2)return;
+  let idx=parseInt(frame.dataset.idx||'0',10);
+  idx=(idx+dir+count)%count;
+  frame.dataset.idx=idx;
+  imgs.forEach((img,i)=>img.classList.toggle('act',i===idx));
+  const counter=document.getElementById('dpgc-'+id);
+  if(counter)counter.textContent=(idx+1)+' / '+count;
+}
+
+function shareDetailLink(){
+  const url=location.href;
+  if(navigator.share){navigator.share({title:document.title,url}).catch(()=>{});return;}
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(url).then(()=>showToast('🔗 הקישור הועתק ללוח')).catch(()=>showToast(url));
+  }else{showToast(url);}
+}
+
+function renderDetailPage(loc){
+  const imgs=getImgs(loc);
+  const status=loc.is_open?'<span class="badge b-open">פתוח</span>':'<span class="badge b-closed">סגור</span>';
+  const paid=loc.is_paid?'<span class="badge b-paid">💰 בתשלום</span>':'<span class="badge b-free">חינם</span>';
+  const region=loc.region?`<span class="badge b-region">${escHtml(loc.region)}</span>`:'';
+  const cat=loc.category?`<span class="card-cat">${catIcon(loc.category)} ${escHtml(loc.category)}</span>`:'';
+  const likedCls=loc.liked_by_me?'liked':'';
+  const isOwner=state.user&&(state.user.user_id===loc.user_id||isAdminUser(state.user.email));
+  const postCount=loc.user_loc_count||0;
+  const rank=getRank(postCount);
+  const rankHtml=rank?`<span class="rank-badge ${rank.cls}">${rank.label}</span>`:'';
+
+  document.getElementById('dp-topbar-title').textContent=loc.name||'';
+  document.title=(loc.name?loc.name+' · ':'')+'דרך הארץ';
+
+  // Hero banner — photo (or gradient fallback) with the name and key badges overlaid, navigated with arrows when there's more than one image
+  const heroBadges=`${status}${paid}${region}`;
+  const galleryHTML=imgs.length
+    ? `<div class="dp-hero" id="dpg-${loc.id}" data-idx="0">
+        ${imgs.map((u,i)=>`<img src="${imgSrc(u)}" alt="${escHtml(loc.name)}" loading="lazy" class="${i===0?'act':''}" onerror="this.style.display='none'">`).join('')}
+        <div class="dp-hero-overlay">
+          <div class="dp-hero-top">${cat}</div>
+          <div class="dp-hero-bottom">
+            <div class="dp-hero-name">${escHtml(loc.name)}</div>
+            <div class="dp-hero-meta">${heroBadges}</div>
+          </div>
+        </div>
+        ${imgs.length>1?`
+        <button class="dp-gallery-arrow next" onclick="dpGalleryNav(${loc.id},1)" aria-label="התמונה הבאה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button class="dp-gallery-arrow prev" onclick="dpGalleryNav(${loc.id},-1)" aria-label="התמונה הקודמת"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+        <div class="dp-gallery-count" id="dpgc-${loc.id}">1 / ${imgs.length}</div>`:''}
+      </div>`
+    : `<div class="dp-hero dp-hero-empty">
+        <div class="dp-hero-overlay">
+          <div class="dp-hero-top">${cat}</div>
+          <div class="dp-hero-bottom">
+            <div class="dp-hero-name">${escHtml(loc.name)}</div>
+            <div class="dp-hero-meta">${heroBadges}</div>
+          </div>
+        </div>
+        <div class="dp-hero-noimg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg> אין תמונות למקום זה</div>
+      </div>`;
+
+  const mapHTML=(loc.lat&&loc.lng)?`<div style="padding:0 22px 20px"><div class="detail-map" id="dmap"></div></div>`:'';
+  const addrRow=loc.address?`<div class="d-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>${escHtml(loc.address)}</div>`:'';
+  const distLbl=distLabel(loc);
+  const distRow=distLbl?`<div class="d-row d-distance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36z"/></svg>${distLbl} ממך</div>`:'';
+  const hoursRow=loc.hours?`<div class="d-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${escHtml(loc.hours)}</div>`:'';
+  const linkRow=loc.link?`<div class="d-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><a href="${escHtml(loc.link)}" target="_blank" rel="noopener">פתח קישור</a></div>`:'';
+  const ownerActions=isOwner?`
+    <button class="btn-edit-d" onclick="openEdit(${loc.id})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> עריכה</button>
+    <button class="btn-del-d" onclick="deleteLocation(${loc.id});closeDetailPage()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg> מחיקה</button>`:'';
+
+  const mainCol=`
+    <div class="dp-main-col">
+      ${galleryHTML}
+      <div class="d-body">
+        ${loc.audience?`<div class="audience-tags">${loc.audience.split(',').filter(Boolean).map(a=>`<span class="badge b-audience"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> ${escHtml(a.trim())}</span>`).join('')}</div>`:''}
+        ${loc.description?`<div class="d-desc">${renderDesc(loc.description)}</div>`:''}
+        <div style="display:flex;flex-direction:column;gap:10px">${distRow}${addrRow}${hoursRow}${linkRow}</div>
+      </div>
+      ${mapHTML}
+      <div class="copyright-note">📸 התמונות באתר זה מוגנות בזכויות יוצרים בהתאם לסעיף 27א לחוק זכויות יוצרים, תשס"ח-2007</div>
+      <div class="reviews-section">
+        <div class="reviews-title">
+          <div class="reviews-title-lbl">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            חוויות מהמקום
+          </div>
+          <span class="cnt-pill" id="reviews-count-${loc.id}">${loc.review_count||0}</span>
+        </div>
+        <div class="reviews-list" id="reviews-list-${loc.id}"><div style="font-size:13px;color:var(--text2);text-align:center;padding:8px 0">טוען...</div></div>
+        ${state.token?`
+        <div class="review-form">
+          ${avatarHTML(state.user?.picture,state.user?.name,'review-form-avatar','',state.user?.user_id)}
+          <div class="review-form-body">
+            <div class="review-form-title">ספר למנהלים על החוויה שלך</div>
+            <textarea id="review-textarea-${loc.id}" placeholder="כתוב כאן את הביקורת שלך. המנהל יאשר אותה לפני הצגה לכולם..."></textarea>
+            <button class="btn-review-submit" id="review-submit-btn-${loc.id}" onclick="submitReview(${loc.id})">שלח לאישור</button>
+          </div>
+        </div>`:`<div class="reviews-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>התחבר כדי לשתף חוויה</div>`}
+      </div>
+    </div>`;
+
+  const sideCol=`
+    <div class="dp-side-col">
+      <div class="dp-side-card">
+        <div class="d-actions" style="border:none;padding:0;flex-direction:column;align-items:stretch">
+          <button class="btn-lk-lg ${likedCls}" id="dlk-${loc.id}" onclick="toggleLike(${loc.id})" style="justify-content:center">
+            <svg class="hrt" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span id="dlc-${loc.id}">${loc.like_count||0}</span> אהבתי
+          </button>
+          ${loc.link?`<a class="btn-goto" href="${escHtml(loc.link)}" target="_blank" rel="noopener" style="justify-content:center">
+            <svg viewBox="0 0 24 24" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>כניסה למקום</a>`:''}
+          ${ownerActions}
+        </div>
+      </div>
+      <div class="dp-side-card">
+        <h4>הועלה על ידי</h4>
+        <div class="dp-poster" onclick="openUserProfile(${loc.user_id})">
+          ${avatarHTML(loc.user_picture,loc.user_name,'','width:40px;height:40px;border-radius:50%;font-size:16px',loc.user_id)}
+          <div>
+            <div class="dp-poster-name">${escHtml(loc.user_name||'')} ${rankHtml}</div>
+            <div class="dp-poster-count">${postCount} פוסטים</div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+
+  document.getElementById('dp-layout-mount').innerHTML=mainCol+sideCol;
+
+  loadReviews(loc.id);
+  if(loc.lat&&loc.lng){
+    setTimeout(()=>{
+      const el=document.getElementById('dmap');
+      if(!el)return;
+      const m=L.map(el,{zoomControl:true,attributionControl:false});
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(m);
+      m.setView([loc.lat,loc.lng],14);
+      L.circleMarker([loc.lat,loc.lng],{radius:10,fillColor:'#10b981',color:'#fff',weight:2,fillOpacity:1}).addTo(m);
+    },80);
+  }
+}
+
+
+// ── Reviews ──
+async function loadReviews(locId){
+  const el=document.getElementById('reviews-list-'+locId);
+  if(!el)return;
+  try{
+    const reviews=await apiFetch('/api/locations/'+locId+'/reviews','GET');
+    const cnt=document.getElementById('reviews-count-'+locId);
+    if(cnt)cnt.textContent=reviews.length;
+    if(!reviews.length){
+      el.innerHTML='<div class="reviews-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>אין חוויות עדיין. היה הראשון לשתף!</div>';
+      return;
+    }
+    const admin=state.user&&isAdminUser(state.user.email);
+    el.innerHTML=reviews.map(r=>{
+      const pending=r.approved===0;
+      const pendingTag=pending?'<span class="review-pending-tag">ממתין לאישור</span>':'';
+      const adminBtns=admin&&pending?`
+        <div class="admin-review-actions">
+          <button class="btn-approve" onclick="approveReview(${r.id},${locId})">✓ אשר לפרסום</button>
+          <button class="btn-reject" onclick="deleteReviewInline(${r.id},${locId})">✕ מחק</button>
+        </div>`:'';
+      return `<div class="review-item${pending?' pending':''}" id="review-card-${r.id}">
+        <div class="review-author">
+          ${avatarHTML(r.user_picture,r.user_name,'review-avatar','',r.user_id)}
+          <span class="review-author-name">${escHtml(r.user_name||''||'')}</span>
+          ${pendingTag}
+          <span class="review-author-date">${new Date(r.created_at).toLocaleDateString('he-IL')}</span>
+        </div>
+        <div class="review-text">${escHtml(r.text)}</div>
+        ${adminBtns}
+      </div>`;
+    }).join('');
+  }catch(e){
+    el.innerHTML='<div class="reviews-empty">שגיאה בטעינת חוויות</div>';
+  }
+}
+
+async function submitReview(locId){
+  if(!state.token){requireAuth('שליחת חוויה','הצטרפו כדי לשתף את החוויה שלכם מהמקום');return;}
+  const ta=document.getElementById('review-textarea-'+locId);
+  const btn=document.getElementById('review-submit-btn-'+locId);
+  if(!ta||!btn)return;
+  const text=ta.value.trim();
+  if(!text){showToast('נא לכתוב משהו לפני השליחה');return;}
+  btn.disabled=true;btn.textContent='שולח...';
+  try{
+    await apiFetch('/api/locations/'+locId+'/reviews','POST',{text});
+    ta.value='';
+    showToast('✅ הביקורת נשלחה לאישור המנהל');
+  }catch(e){showToast('שגיאה: '+e.message);}
+  finally{btn.disabled=false;btn.textContent='שלח לאישור';}
+}
+
+async function approveReview(reviewId, locId){
+  try{
+    await apiFetch('/api/reviews/'+reviewId+'/approve','PUT');
+    showToast('✅ הביקורת אושרה');
+    if(locId) loadReviews(locId); else loadPendingReviews();
+  }catch(e){showToast('שגיאה: '+e.message);}
+}
+async function deleteReviewInline(reviewId, locId){
+  try{
+    await apiFetch('/api/reviews/'+reviewId,'DELETE');
+    showToast('הביקורת נמחקה');
+    if(locId) loadReviews(locId); else loadPendingReviews();
+  }catch(e){showToast('שגיאה: '+e.message);}
+}
+async function deleteReview(reviewId){
+  // backward compat for admin panel
+  await deleteReviewInline(reviewId, null);
+}
+
+async function loadPendingReviews(){
+  const el=document.getElementById('admin-reviews-list');
+  if(!el)return;
+  try{
+    const reviews=await apiFetch('/api/admin/reviews','GET');
+    const badge=document.getElementById('pending-badge');
+    if(badge)badge.textContent=reviews.length||'';
+    if(!badge&&!reviews.length){}
+    if(!reviews.length){
+      el.innerHTML='<div style="font-size:13px;color:var(--text2);padding:8px 0">אין ביקורות ממתינות לאישור</div>';
+      return;
+    }
+    el.innerHTML=reviews.map(r=>`
+      <div class="admin-review-card">
+        <div class="admin-review-meta">
+          <b>${escHtml(r.user_name||'')}</b> על <b>${escHtml(r.location_name||'')}</b>
+          &nbsp;·&nbsp; ${new Date(r.created_at).toLocaleDateString('he-IL')}
+        </div>
+        <div class="admin-review-text">${escHtml(r.text)}</div>
+        <div class="admin-review-actions">
+          <button class="btn-approve" onclick="approveReview(${r.id})">✓ אשר לפרסום</button>
+          <button class="btn-reject" onclick="deleteReview(${r.id})">✕ מחק</button>
+        </div>
+      </div>`).join('');
+  }catch(e){
+    el.innerHTML='<div style="font-size:13px;color:var(--text2)">שגיאה בטעינת ביקורות</div>';
+  }
+}
+
+// ── Announcements ──
+const ANNOUNCE_SEEN_KEY='mtyalim_announce_seen';
+
+async function loadAnnouncement(){
+  try{
+    const data=await apiFetch('/api/announcement','GET');
+    renderAnnouncement(data);
+  }catch(e){}
+}
+
+function renderAnnouncement(data){
+  const wrap=document.getElementById('announce-bar-wrap');
+  if(!wrap)return;
+  if(!data||!data.text){wrap.innerHTML='';return;}
+  const lastSeen=localStorage.getItem(ANNOUNCE_SEEN_KEY);
+  const isNew=data.updated_at&&data.updated_at!==lastSeen;
+  const dot=document.getElementById('admin-notif-dot');
+  if(dot)dot.classList.toggle('show',!!isNew);
+  wrap.innerHTML=`<div class="announce-bar" onclick="markAnnounceSeen('${escHtml(data.updated_at||'')}')">
+    <div class="announce-bar-icon">
+      <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+      </svg>
+    </div>
+    <div class="announce-bar-body">
+      <div class="announce-bar-title">הודעת מנהל</div>
+      <div class="announce-bar-text">${escHtml(data.text)}</div>
+      <div class="announce-bar-date">${data.updated_at?new Date(data.updated_at).toLocaleDateString('he-IL'):''}</div>
+    </div>
+  </div>`;
+}
+
+function markAnnounceSeen(ts){
+  if(!ts)return;
+  localStorage.setItem(ANNOUNCE_SEEN_KEY,ts);
+  const dot=document.getElementById('admin-notif-dot');
+  if(dot)dot.classList.remove('show');
+}
+
+async function loadCurrentAnnouncement(){
+  try{
+    const data=await apiFetch('/api/announcement','GET');
+    const el=document.getElementById('announce-input');
+    if(el&&data&&data.text)el.value=data.text;
+  }catch(e){}
+}
+
+async function saveAnnouncement(){
+  const text=(document.getElementById('announce-input')?.value||'').trim();
+  try{
+    const data=await apiFetch('/api/announcement','PUT',{text});
+    renderAnnouncement(data);
+    showToast(text?'✅ הודעה נשמרה':'הודעה נמחקה');
+    // Reset seen so admin also sees it fresh
+    localStorage.removeItem(ANNOUNCE_SEEN_KEY);
+    const dot=document.getElementById('admin-notif-dot');
+    if(dot&&text)dot.classList.add('show');
+  }catch(e){showToast('שגיאה: '+e.message);}
+}
+
+// ── Like ──
+async function toggleLike(id){
+  if(!state.token){requireAuth('סימון אהבתי','הצטרפו כדי לסמן מקומות שאתם אוהבים');return;}
+  try{
+    const res=await apiFetch(`/api/locations/${id}/like`,'POST');
+    [['like-','lc-'],['dlk-','dlc-']].forEach(([bp,cp])=>{
+      const b=document.getElementById(bp+id),c=document.getElementById(cp+id);
+      if(b){res.liked?b.classList.add('liked'):b.classList.remove('liked');}
+      if(c)c.textContent=res.count;
+    });
+    const loc=state.locations.find(l=>l.id===id);
+    if(loc){loc.liked_by_me=res.liked;loc.like_count=res.count;}
+  }catch(e){}
+}
+
+// ── Delete ──
+async function deleteLocation(id){
+  if(!confirm('למחוק את המקום הזה?'))return;
+  try{
+    await apiFetch(`/api/locations/${id}`,'DELETE');
+    state.locations=state.locations.filter(l=>l.id!==id);
+    document.getElementById(`card-${id}`)?.remove();
+    if(!state.locations.length)renderMain();
+    showToast('✅ המקום נמחק');
+  }catch(e){showToast('❌ '+e.message);}
+}
+
+// ── Modal helpers ──
+function closeModal(id){document.getElementById(id).classList.remove('open');}
+document.getElementById('modal-close-btn').onclick=()=>{if(!isFirstContrib)closeModal('modal');};
+document.getElementById('modal').addEventListener('click',e=>{if(e.target===document.getElementById('modal')&&!isFirstContrib)closeModal('modal');});
+document.getElementById('access-modal').addEventListener('click',e=>{if(e.target===document.getElementById('access-modal'))closeModal('access-modal');});
+
+// ── Add/Edit Modal ──
+function openModal(firstContrib){
+  if(!state.token&&!firstContrib){requireAuth('הוספת מקום','הצטרפו לדרך הארץ כדי לשתף מקומות עם הקהילה');return;}
+  isFirstContrib=firstContrib;
+  state.editingId=null;
+  document.getElementById('modal-title').textContent=firstContrib?'הוספת המקום הראשון שלך':'הוספת מקום חדש';
+  document.getElementById('modal-close-btn').style.display=firstContrib?'none':'';
+  clearForm();
+  goStep(1);
+  document.getElementById('modal').classList.add('open');
+}
+
+function openEdit(id){
+  const loc=state.locations.find(l=>l.id===id);
+  if(!loc)return;
+  state.editingId=id;
+  document.getElementById('modal-title').textContent='עריכת מקום';
+  document.getElementById('modal-close-btn').style.display='';
+  isFirstContrib=false;
+  clearForm();
+  state.existingImageUrls=getImgs(loc); // אחרי clearForm כדי שלא יאופס!
+  // Fill form
+  document.getElementById('f-name').value=loc.name||'';
+  document.getElementById('f-category').value=loc.category||'';
+  document.getElementById('f-is-paid').value=loc.is_paid?'1':'0';
+  // rich text editor
+  const descEl=document.getElementById('f-desc');
+  const descHid=document.getElementById('f-desc-hidden');
+  if(descEl){
+    const raw=loc.description||'';
+    descEl.innerHTML=raw
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+      .replace(/__(.+?)__/g,'<u>$1</u>')
+      .replace(/_(.+?)_/g,'<em>$1</em>')
+      .replace(/\n/g,'<br>');
+    if(descHid)descHid.value=raw;
+  }
+  document.getElementById('f-open').checked=loc.is_open!==false;
+  document.getElementById('f-modest').checked=!!loc.is_modest;
+  document.getElementById('f-address').value=loc.address||'';
+  document.getElementById('f-hours').value=loc.hours||'';
+  document.getElementById('f-link').value=loc.link||'';
+  if(loc.audience){document.getElementById('f-audience').value=loc.audience||'';const sel=loc.audience.split(',').map(s=>s.trim());document.querySelectorAll('#f-audience-wrap input[type=checkbox]').forEach(cb=>{cb.checked=sel.includes(cb.value);});}
+  if(loc.lat&&loc.lng){document.getElementById('f-lat').value=loc.lat;document.getElementById('f-lng').value=loc.lng;}
+  // הצג תמונות קיימות עם כפתור הסרה
+  renderExistingImages();
+  goStep(1);
+  document.getElementById('modal').classList.add('open');
+  setTimeout(()=>{initPickerMap();if(loc.lat&&loc.lng)setPickerMarker(loc.lat,loc.lng);},150);
+}
+
+function renderExistingImages(){
+  const prev=document.getElementById('imgs-preview');
+  if(!state.existingImageUrls||!state.existingImageUrls.length){prev.innerHTML='';return;}
+  prev.innerHTML=state.existingImageUrls.map((u,i)=>`
+    <div style="position:relative;display:inline-block">
+      <img src="${imgSrc(u)}" style="width:70px;height:70px;object-fit:cover;border-radius:8px;border:2px solid var(--accent)">
+      <button onclick="removeExistingImage(${i})" style="position:absolute;top:-6px;right:-6px;width:18px;height:18px;border-radius:50%;background:var(--closed);color:#fff;border:none;cursor:pointer;font-size:11px;line-height:1;display:flex;align-items:center;justify-content:center;padding:0">✕</button>
+    </div>`).join('');
+}
+
+function removeExistingImage(i){
+  state.existingImageUrls.splice(i,1);
+  renderExistingImages();
+}
+
+// ── Multi-step ──
+function goStep(n){
+  [1,2,3].forEach(i=>{
+    document.getElementById(`step-${i}`).classList.toggle('active',i===n);
+    const dot=document.getElementById(`sdot-${i}`);
+    dot.classList.toggle('done',i<n);
+    dot.classList.toggle('active',i===n);
+    if(i<3){const line=document.getElementById(`sline-${i}`);if(line)line.classList.toggle('done',i<n);}
+  });
+  currentStep=n;
+  if(n===3)setTimeout(initPickerMap,100);
+}
+
+function updateAudience(){
+  const vals=[...document.querySelectorAll('#f-audience-wrap input:checked')].map(cb=>cb.value);
+  document.getElementById('f-audience').value=vals.join(',');
+}
+
+// ── Rich text editor ──
+function richCmd(cmd){
+  document.getElementById('f-desc').focus();
+  document.execCommand(cmd,false,null);
+  syncDesc();
+}
+function richInsertBullet(){
+  const el=document.getElementById('f-desc');
+  el.focus();
+  document.execCommand('insertHTML',false,'<br>• ');
+  syncDesc();
+}
+function richInsertNewline(){
+  const el=document.getElementById('f-desc');
+  el.focus();
+  document.execCommand('insertHTML',false,'<br>');
+  syncDesc();
+}
+function syncDesc(){
+  const el=document.getElementById('f-desc');
+  const hid=document.getElementById('f-desc-hidden');
+  if(!el||!hid)return;
+  let html=el.innerHTML;
+  // Convert HTML tags → markdown-style markers for safe DB storage
+  let text=html
+    .replace(/<strong>([\s\S]*?)<\/strong>/gi,'**$1**')
+    .replace(/<b>([\s\S]*?)<\/b>/gi,'**$1**')
+    .replace(/<u>([\s\S]*?)<\/u>/gi,'__$1__')
+    .replace(/<em>([\s\S]*?)<\/em>/gi,'_$1_')
+    .replace(/<i>([\s\S]*?)<\/i>/gi,'_$1_')
+    .replace(/<br\s*\/?>/gi,'\n')
+    .replace(/<\/p>/gi,'\n').replace(/<p>/gi,'')
+    .replace(/<\/div>/gi,'\n').replace(/<div>/gi,'')
+    .replace(/<[^>]+>/g,'')
+    .replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>')
+    .replace(/&nbsp;/g,' ')
+    .replace(/\n{3,}/g,'\n\n')
+    .trim();
+  hid.value=text;
+}
+function clearForm(){
+  ['f-name','f-address','f-hours','f-link','f-lat','f-lng','f-image-url','map-search-input'].forEach(id=>{
+    const el=document.getElementById(id);if(el)el.value='';
+  });
+  const descEl=document.getElementById('f-desc');
+  if(descEl)descEl.innerHTML='';
+  const descHid=document.getElementById('f-desc-hidden');
+  if(descHid)descHid.value='';
+  document.getElementById('f-category').value='';
+  document.getElementById('f-is-paid').value='0';
+  document.getElementById('f-open').checked=true;
+  document.getElementById('f-modest').checked=false;
+  const shabbatEl=document.getElementById('f-shabbat');
+  if(shabbatEl)shabbatEl.checked=false;
+  document.getElementById('f-image').value='';
+  document.getElementById('imgs-preview').innerHTML='';
+  document.getElementById('f-audience').value='';
+  document.querySelectorAll('#f-audience-wrap input[type=checkbox]').forEach(cb=>cb.checked=false);
+  document.getElementById('region-tag-display').innerHTML='';
+  document.getElementById('form-error').style.display='none';
+  state.existingImageUrls=[];
+  if(state.pickerMarker){state.pickerMarker.remove();state.pickerMarker=null;}
+}
+
+// ── Images ──
+function onImagesSelected(){
+  const files=document.getElementById('f-image').files;
+  const prev=document.getElementById('imgs-preview');
+  prev.innerHTML='';
+  Array.from(files).forEach(file=>{
+    const r=new FileReader();
+    r.onload=e=>{const img=document.createElement('img');img.src=e.target.result;prev.appendChild(img);};
+    r.readAsDataURL(file);
+  });
+}
+
+// ── Map picker ──
+function initPickerMap(){
+  if(state.pickerMap){state.pickerMap.invalidateSize();return;}
+  const el=document.getElementById('map-picker');
+  if(!el)return;
+  const m=L.map(el,{attributionControl:false});
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(m);
+  m.setView([31.7,35.1],7);
+  m.on('click',e=>setPickerMarker(e.latlng.lat,e.latlng.lng));
+  state.pickerMap=m;
+}
+
+function setPickerMarker(lat,lng){
+  document.getElementById('f-lat').value=lat.toFixed(6);
+  document.getElementById('f-lng').value=lng.toFixed(6);
+  if(state.pickerMarker)state.pickerMarker.remove();
+  state.pickerMarker=L.circleMarker([lat,lng],{radius:9,fillColor:'#10b981',color:'#fff',weight:3,fillOpacity:1}).addTo(state.pickerMap);
+  state.pickerMap.setView([lat,lng],13);
+  // auto-region tag
+  const region=lat>32.5?'צפון':lat>=31.5?'מרכז':'דרום';
+  document.getElementById('region-tag-display').innerHTML=`<div class="region-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>זוהה אוטומטית: ${region}</div>`;
+}
+
+['f-lat','f-lng'].forEach(id=>{
+  document.getElementById(id).addEventListener('change',()=>{
+    const lat=parseFloat(document.getElementById('f-lat').value);
+    const lng=parseFloat(document.getElementById('f-lng').value);
+    if(!isNaN(lat)&&!isNaN(lng)&&state.pickerMap)setPickerMarker(lat,lng);
+  });
+});
+
+async function geocodeSearch(){
+  const q=document.getElementById('map-search-input').value.trim();
+  if(!q)return;
+  try{
+    const r=await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&format=json&limit=1&countrycodes=il`,{headers:{'Accept-Language':'he'}});
+    const d=await r.json();
+    if(d.length)setPickerMarker(parseFloat(d[0].lat),parseFloat(d[0].lon));
+    else showToast('לא נמצא מיקום, נסה שם אחר');
+  }catch(e){showToast('שגיאה בחיפוש מיקום');}
+}
+document.getElementById('map-search-input').addEventListener('keydown',e=>{if(e.key==='Enter')geocodeSearch();});
+
+function useMyLoc(){
+  if(!navigator.geolocation){showToast('הדפדפן לא תומך במיקום');return;}
+  navigator.geolocation.getCurrentPosition(p=>setPickerMarker(p.coords.latitude,p.coords.longitude),()=>showToast('לא ניתן לקבל מיקום'));
+}
+
+// ── Submit ──
+async function submitLocation(){
+  const errEl=document.getElementById('form-error');
+  errEl.style.display='none';
+  const name=document.getElementById('f-name').value.trim();
+  const cat=document.getElementById('f-category').value;
+  const lat=document.getElementById('f-lat').value;
+  const lng=document.getElementById('f-lng').value;
+  if(!name){showFormErr('שם המקום הוא שדה חובה');goStep(1);return;}
+  const audience=document.getElementById('f-audience').value.trim();
+  if(!audience){showFormErr('יש לסמן לפחות קהל יעד אחד');goStep(1);return;}
+  if(!cat){showFormErr('יש לבחור קטגוריה');goStep(1);return;}
+  if(!lat||!lng){showFormErr('יש לסמן מיקום על המפה');return;}
+
+  // ── בדיקת כפילויות ──
+  if(!state.editingId){
+    const newLat=parseFloat(lat), newLng=parseFloat(lng);
+    const nameLower=name.toLowerCase().replace(/\s+/g,'');
+    const dupByName=state.locations.find(l=>
+      l.name.toLowerCase().replace(/\s+/g,'')===nameLower
+    );
+    const dupByCoords=state.locations.find(l=>{
+      if(!l.lat||!l.lng)return false;
+      // Haversine — סף 100 מטר
+      const R=6371000;
+      const dLat=(newLat-l.lat)*Math.PI/180;
+      const dLng=(newLng-l.lng)*Math.PI/180;
+      const a=Math.sin(dLat/2)**2+Math.cos(l.lat*Math.PI/180)*Math.cos(newLat*Math.PI/180)*Math.sin(dLng/2)**2;
+      const dist=R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+      return dist<100;
+    });
+    if(dupByName){
+      showFormErr(`⚠️ מקום בשם "${dupByName.name}" כבר קיים במערכת.`);
+      goStep(1);return;
+    }
+    if(dupByCoords){
+      showFormErr(`⚠️ מקום קרוב מאוד כבר קיים: "${dupByCoords.name}" (פחות מ-100 מטר).`);
+      return;
+    }
+  }
+
+  const btn=document.getElementById('submit-btn');
+  btn.disabled=true;btn.textContent='שומר...';
+  try{
+    let urls=[...(state.existingImageUrls||[])];
+    const manualUrl=document.getElementById('f-image-url').value.trim();
+    if(manualUrl&&!urls.includes(manualUrl))urls.push(manualUrl);
+    const files=document.getElementById('f-image').files;
+    if(files&&files.length){
+      btn.textContent=`מעלה ${files.length} תמונות...`;
+      for(let i=0;i<files.length;i++){
+        const url=await uploadToCloudinary(files[i]);
+        urls.push(url);
+      }
+    }
+    const payload={
+      name,category:cat,
+      description:(document.getElementById('f-desc-hidden')?.value||document.getElementById('f-desc')?.innerText||'').trim(),
+      address:document.getElementById('f-address').value.trim(),
+      hours:document.getElementById('f-hours').value.trim(),
+      link:document.getElementById('f-link').value.trim(),
+      lat:parseFloat(lat),lng:parseFloat(lng),
+      is_open:document.getElementById('f-open').checked,
+      is_modest:document.getElementById('f-modest').checked,
+      is_paid:document.getElementById('f-is-paid').value==='1',
+      audience:audience,
+      image_url:urls.join(','),
+    };
+    if(state.editingId){
+      await apiFetch(`/api/locations/${state.editingId}`,'PUT',payload);
+      showToast('✅ המקום עודכן בהצלחה');
+    }else{
+      await apiFetch('/api/locations','POST',payload);
+      showToast('✅ המקום נוסף בהצלחה!');
+    }
+    closeModal('modal');
+    if(isFirstContrib){state.user.has_contributed=true;showApp();}
+    loadLocations();
+  }catch(e){showFormErr(e.message);}
+  finally{btn.disabled=false;btn.textContent='💾 שמור מקום';}
+}
+function showFormErr(msg){const el=document.getElementById('form-error');el.textContent=msg;el.style.display='block';}
+
+// ── Profile ──
+function openMyProfile(){
+  if(state.user)openUserProfile(state.user.user_id);
+}
+async function openUserProfile(userId){
+  document.getElementById('profile-modal').classList.add('open');
+  document.getElementById('profile-content').innerHTML='<div style="padding:40px;text-align:center">טוען...</div>';
+  try{
+    const data=await apiFetch(`/api/user/${userId}/profile`,'GET');
+    const rank=getRank(data.loc_count||0);
+    const rankHtml=rank?`<span class="rank-badge ${rank.cls}" style="font-size:12px;padding:3px 10px">${rank.label}</span>`:'<span style="font-size:12px;color:var(--text2)">עדיין ללא תגית</span>';
+    const nextRank=getNextRank(data.loc_count||0);
+    const isMe=state.user&&state.user.user_id===userId;
+    document.getElementById('profile-content').innerHTML=`
+      <div class="profile-header">
+        ${avatarHTML(data.picture,data.name,'profile-pic-lg','width:72px;height:72px;border-radius:50%;font-size:26px;border:3px solid var(--accent)',userId)}
+        <div class="profile-name">${escHtml(data.name||'')} ${isMe?'<span style="font-size:12px;color:var(--text2)">(אני)</span>':''}</div>
+        ${rankHtml}
+        ${nextRank?`<div style="font-size:11px;color:var(--text2)">עוד ${nextRank.left} פוסטים לתגית: <b>${nextRank.label}</b></div>`:'<div style="font-size:11px;color:var(--accent)">🏆 דרגה מקסימלית!</div>'}
+      </div>
+      <div class="profile-stats">
+        <div class="profile-stat"><div class="num">${data.loc_count||0}</div><div class="lbl">מיקומים</div></div>
+        <div class="profile-stat"><div class="num">${data.total_likes||0}</div><div class="lbl">לייקים</div></div>
+        <div class="profile-stat"><div class="num">${data.total_liked_given||0}</div><div class="lbl">לייקים נתן</div></div>
+      </div>
+      <div style="padding:10px 18px 4px;font-size:12px;font-weight:700;color:var(--text2)">מיקומים שפרסם:</div>
+      <div class="profile-locations">
+        ${(data.locations||[]).length===0?'<div style="text-align:center;color:var(--text2);padding:20px">עדיין לא פרסם מיקומים</div>':
+          (data.locations||[]).map(l=>{
+            const thumb=l.image_url?(l.image_url.split(',')[0].trim()):'';
+            return `<div class="profile-loc-item" onclick="closeModal('profile-modal');openDetail(${l.id})">
+              ${thumb?`<img class="profile-loc-thumb" src="${imgSrc(thumb)}" alt="">`:'<div class="profile-loc-thumb" style="background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:20px">📍</div>'}
+              <div><div class="profile-loc-name">${escHtml(l.name)}</div><div class="profile-loc-likes">❤️ ${l.like_count||0} לייקים</div></div>
+            </div>`;
+          }).join('')}
+      </div>
+      <div class="copyright-note">📸 תמונות מוגנות לפי סעיף 27א לחוק זכויות יוצרים, תשס"ח-2007</div>`;
+  }catch(e){document.getElementById('profile-content').innerHTML=`<div style="padding:20px">שגיאה: ${e.message}</div>`;}
+}
+function getNextRank(posts){
+  const ranks=[{min:2,label:'תייר'},{min:30,label:'מטייל'},{min:100,label:'תרמילאי'},{min:200,label:'נווד'},{min:500,label:'הרפתקן'}];
+  for(const r of ranks){if(posts<r.min)return{label:r.label,left:r.min-posts};}
+  return null;
+}
+document.getElementById('profile-modal').addEventListener('click',e=>{if(e.target===document.getElementById('profile-modal'))closeModal('profile-modal');});
+
+// Load extra admins from localStorage
+(function(){try{const a=localStorage.getItem('mtyalim_admins');if(a){const arr=JSON.parse(a);arr.forEach(e=>{if(!ADMIN_EMAILS.includes(e))ADMIN_EMAILS.push(e);});}}catch(e){}})();
+
+function adminTab(name, btn){
+  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.admin-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  const panel=document.getElementById('admin-panel-'+name);
+  if(panel)panel.classList.add('active');
+}
+
+async function openAdmin(){
+  document.getElementById('admin-modal').classList.add('open');
+  document.getElementById('admin-body').innerHTML='<div style="padding:20px;text-align:center">טוען...</div>';
+  try{
+    const data=await apiFetch('/api/admin/stats','GET');
+    document.getElementById('admin-body').innerHTML=`
+      <div class="admin-stats" style="margin-bottom:10px">
+        <div class="stat-card"><div class="num">${data.users}</div><div class="lbl">סה"כ משתמשים</div></div>
+        <div class="stat-card" style="--stat-c:#6366f1"><div class="num">${data.active_7d??'-'}</div><div class="lbl">פעילים ב-7 ימים</div></div>
+        <div class="stat-card" style="--stat-c:#f59e0b"><div class="num">${data.active_30d??'-'}</div><div class="lbl">פעילים ב-30 ימים</div></div>
+      </div>
+      <div class="admin-stats">
+        <div class="stat-card"><div class="num">${data.locations}</div><div class="lbl">סה"כ מיקומים</div></div>
+        <div class="stat-card" style="--stat-c:var(--accent)"><div class="num">${data.locs_7d??'-'}</div><div class="lbl">מיקומים השבוע</div></div>
+        <div class="stat-card" style="--stat-c:var(--like)"><div class="num">${data.likes}</div><div class="lbl">סה"כ לייקים</div></div>
+      </div>
+      <div class="admin-tabs">
+        <button class="admin-tab active" onclick="adminTab('users',this)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          משתמשים
+        </button>
+        <button class="admin-tab" onclick="adminTab('reviews',this)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          ביקורות <span class="admin-tab-badge" id="pending-badge">?</span>
+        </button>
+        <button class="admin-tab" onclick="adminTab('announce',this)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          הודעות
+        </button>
+        <button class="admin-tab" onclick="adminTab('ad',this)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+          פרסומת
+        </button>
+        <button class="admin-tab" onclick="adminTab('admins',this)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          הרשאות
+        </button>
+      </div>
+
+      <div class="admin-panel active" id="admin-panel-users">
+        <div class="admin-section-lbl">כל המשתמשים <span class="cnt-pill">${(data.all_users||[]).length}</span></div>
+        <div class="admin-card" style="padding:6px 14px">
+          ${(data.all_users||[]).map((u,i)=>{
+            const isAdm=ADMIN_EMAILS.includes(u.email);
+            return `<div class="admin-user-row" style="${i?'border-top:1px solid var(--border)':''}">
+              ${avatarHTML(u.picture,u.name,'','width:34px;height:34px;border-radius:50%;font-size:13px',u.email)}
+              <div class="info"><b>${escHtml(u.name||'')}${isAdm?'<span class="admin-badge"> מנהל</span>':''}</b><small>${escHtml(u.email||'')} · ${u.is_google?'Google':'אימייל'}</small></div>
+              <span class="cnt">${u.loc_count} מקומות</span>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>
+
+      <div class="admin-panel" id="admin-panel-reviews">
+        <div class="admin-section-lbl">ביקורות ממתינות לאישור</div>
+        <div id="admin-reviews-list" style="display:flex;flex-direction:column;gap:10px"><div style="font-size:13px;color:var(--text2);padding:8px 0">טוען...</div></div>
+      </div>
+
+      <div class="admin-panel" id="admin-panel-announce">
+        <div class="admin-card">
+          <div class="admin-field">
+            <label>הודעה שתופיע בראש הדף (השאר ריק למחיקה)</label>
+            <textarea id="announce-input" placeholder="כתוב כאן הודעה..."></textarea>
+          </div>
+          <button class="btn-save-ad" style="margin-top:12px;width:100%" onclick="saveAnnouncement()">💾 שמור הודעה</button>
+        </div>
+      </div>
+
+      <div class="admin-panel" id="admin-panel-ad">
+        <div class="admin-card admin-ad-form">
+          <div class="admin-field">
+            <label>קישור לתמונת הפרסומת (URL)</label>
+            <input type="url" id="ad-img-input" placeholder="https://..." value="${escHtml(adData.img||'')}">
+          </div>
+          <div class="admin-field">
+            <label>קישור ללחיצה (אופציונלי)</label>
+            <input type="url" id="ad-link-input" placeholder="https://..." value="${escHtml(adData.link||'')}">
+          </div>
+          <div class="admin-toggle-row">
+            <label class="toggle" style="flex-shrink:0">
+              <input type="checkbox" id="ad-enabled" ${adData.enabled?'checked':''}>
+              <span class="toggle-tr"></span>
+              <span class="toggle-th"></span>
+            </label>
+            <span>הפרסומת פעילה</span>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="btn-save-ad" style="flex:1" onclick="saveAd()">💾 שמור הגדרות</button>
+            <button class="btn-save-ad ghost" style="flex:1" onclick="testAd()">👁️ תצוגה מקדימה</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-panel" id="admin-panel-admins">
+        <div class="admin-card">
+          <div class="admin-section-lbl">הוספת מנהל חדש</div>
+          <div class="admin-add-admin">
+            <input type="email" id="new-admin-email" placeholder="אימייל משתמש קיים" dir="ltr">
+            <button class="btn-add-admin" onclick="addAdmin()">הוסף מנהל</button>
+          </div>
+        </div>
+      </div>
+    `;
+  loadPendingReviews();
+  loadCurrentAnnouncement();
+  }catch(e){document.getElementById('admin-body').innerHTML=`<div style="padding:20px">שגיאה: ${e.message}</div>`;}
+}
+
+function saveAd(){
+  adData.img=(document.getElementById('ad-img-input')?.value||'').trim();
+  adData.link=(document.getElementById('ad-link-input')?.value||'').trim();
+  adData.enabled=document.getElementById('ad-enabled')?.checked||false;
+  saveAdSettings();
+  showToast('✅ הגדרות פרסומת נשמרו');
+}
+function testAd(){
+  const img=(document.getElementById('ad-img-input')?.value||'').trim();
+  const link=(document.getElementById('ad-link-input')?.value||'').trim();
+  if(!img){showToast('נא להכניס קישור לתמונה');return;}
+  const prev={...adData};
+  adData={img,link,enabled:true};
+  showAd();
+  adData=prev;
+}
+function addAdmin(){
+  const email=(document.getElementById('new-admin-email')?.value||'').trim();
+  if(!email){showToast('נא להכניס אימייל');return;}
+  if(!ADMIN_EMAILS.includes(email)){
+    ADMIN_EMAILS.push(email);
+    localStorage.setItem('mtyalim_admins',JSON.stringify(ADMIN_EMAILS));
+    showToast(`✅ ${email} הוסף כמנהל`);
+    const inp=document.getElementById('new-admin-email');
+    if(inp)inp.value='';
+  }else{showToast('המשתמש כבר מנהל');}
+}
+
+document.getElementById('admin-modal').addEventListener('click',e=>{if(e.target===document.getElementById('admin-modal'))closeModal('admin-modal');});
+
+// ── Polling for new locations ──
+function startPolling(){
+  // set initial count
+  state.lastCount=state.locations.length;
+  clearInterval(pollTimer);
+  pollTimer=setInterval(async()=>{
+    try{
+      const data=await apiFetch('/api/locations/count','GET');
+      if(data.count>state.lastCount&&state.lastCount>0){
+        const diff=data.count-state.lastCount;
+        showNewLocationToast(diff);
+      }
+    }catch(e){}
+  },30000);
+}
+
+function showNewLocationToast(count){
+  const toast=document.getElementById('toast');
+  toast.innerHTML=`<span>🗺️ ${count} מקום${count>1?'ות':''} חדש${count>1?'ים':''} הועלה!</span><button onclick="refreshAndDismiss()">הצג</button>`;
+  toast.classList.add('show');
+  setTimeout(()=>toast.classList.remove('show'),10000);
+}
+function refreshAndDismiss(){
+  document.getElementById('toast').classList.remove('show');
+  loadLocations().then(()=>{state.lastCount=state.locations.length;});
+}
+function showToast(msg,dur=3500){
+  const toast=document.getElementById('toast');
+  toast.innerHTML=`<span>${msg}</span>`;
+  toast.classList.add('show');
+  setTimeout(()=>toast.classList.remove('show'),dur);
+}
+
+// ── API ──
+async function apiFetch(path,method,body){
+  const opts={method,headers:{'Content-Type':'application/json'}};
+  if(state.token)opts.headers['Authorization']='Bearer '+state.token;
+  if(body)opts.body=JSON.stringify(body);
+  const res=await fetch(API+path,opts);
+  const data=await res.json();
+  if(!res.ok){
+    const err=new Error(data.error||'שגיאה');
+    if(data.needs_verification)err.needsVerification=true;
+    throw err;
+  }
+  return data;
+}
+function escHtml(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+</script>
+<script>
+(function(){
+  var s=document.createElement('script');
+  s.src='https://accounts.google.com/gsi/client';
+  s.async=true; s.defer=true;
+  s.onload=function(){initGoogle();};
+  s.onerror=function(){googleBlocked();};
+  document.head.appendChild(s);
+})();
+</script>
+<script src="https://xnet2.github.io/status/xnet-badge.js"></script>
+</body>
+</html>
